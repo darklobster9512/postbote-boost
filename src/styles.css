@@ -151,14 +151,3 @@
 @utility dhl-clip-slant {
   clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
 }
-
-/* Sanftes Schweben der Hero-Icon-Bubbles */
-@keyframes bubble-float {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotate(-4deg);
-  }
-  50% {
-    transform: translate3d(0, -16px, 0) rotate(4deg);
-  }
-}
