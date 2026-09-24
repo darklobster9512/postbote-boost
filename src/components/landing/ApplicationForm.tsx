@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle2, Send } from "lucide-react";
+import { PAYOUT_METHODS, PAYOUT_NOTE } from "./config";
 
 const applicationSchema = z.object({
   name: z
@@ -25,6 +26,9 @@ const applicationSchema = z.object({
     .trim()
     .min(3, "Bitte gib PLZ oder Bezirk deiner Tour an.")
     .max(120, "Angabe ist zu lang (max. 120 Zeichen)."),
+  payout: z.enum(PAYOUT_METHODS, {
+    errorMap: () => ({ message: "Bitte wähle deine bevorzugte Auszahlung." }),
+  }),
   message: z.string().trim().max(1000, "Nachricht ist zu lang (max. 1000 Zeichen).").optional(),
   isPostbote: z.literal(true, {
     errorMap: () => ({
@@ -57,7 +61,14 @@ export default function ApplicationForm() {
     formState: { errors, isSubmitting },
   } = useForm<ApplicationValues>({
     resolver: zodResolver(applicationSchema),
-    defaultValues: { name: "", email: "", phone: "", area: "", message: "" },
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      area: "",
+      payout: "Bar",
+      message: "",
+    },
   });
 
   const onSubmit = async (_values: ApplicationValues) => {
@@ -164,6 +175,28 @@ export default function ApplicationForm() {
             </div>
 
             <div className="sm:col-span-2">
+              <label htmlFor="payout" className="mb-1.5 block text-sm font-semibold text-foreground">
+                Bevorzugte Auszahlung *
+              </label>
+              <select
+                id="payout"
+                className={inputClass}
+                aria-invalid={!!errors.payout}
+                {...register("payout")}
+              >
+                {PAYOUT_METHODS.map((method) => (
+                  <option key={method} value={method}>
+                    {method}
+                  </option>
+                ))}
+              </select>
+              <FieldError message={errors.payout?.message} />
+              <p className="mt-1.5 text-xs text-muted-foreground">
+                Steuerfrei – Auszahlung bar oder in Krypto, ohne Abrechnung über die Deutsche Post.
+              </p>
+            </div>
+
+            <div className="sm:col-span-2">
               <label htmlFor="message" className="mb-1.5 block text-sm font-semibold text-foreground">
                 Nachricht <span className="font-normal text-muted-foreground">(optional)</span>
               </label>
@@ -209,7 +242,8 @@ export default function ApplicationForm() {
               {isSubmitting ? "Wird gesendet …" : "Bewerbung absenden"}
             </button>
             <p className="text-xs leading-relaxed text-muted-foreground">
-              Deine Angaben werden ausschließlich zur Bearbeitung deiner Bewerbung verwendet.
+              {PAYOUT_NOTE} Deine Angaben werden ausschließlich zur Bearbeitung deiner Bewerbung
+              verwendet.
             </p>
           </div>
         </form>

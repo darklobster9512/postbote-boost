@@ -1,16 +1,26 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { PAYOUT_CRYPTO_OPTIONS } from "./config";
 
 const FAQ_ITEMS = [
   {
+    question: "Wie werde ich bezahlt?",
+    answer:
+      "Bar oder in Krypto – ganz wie du möchtest. Die Auszahlung ist steuerfrei und läuft completely ohne Abrechnung über die Deutsche Post: deine Gehaltsabrechnung dort bleibt völlig unberührt.",
+  },
+  {
+    question: "Welche Krypto-Arten sind möglich?",
+    answer: `${PAYOUT_CRYPTO_OPTIONS}. Du sagst uns einfach deine Wallet-Adresse – wir zahlen dorthin aus.`,
+  },
+  {
     question: "Muss ich bei der Deutschen Post kündigen?",
     answer:
-      "Nein. Du bleibst komplett angestellt bei der Deutschen Post – gleicher Job, gleiches Gehalt, gleiche Tour. Unsere Zusatzzustellung kommt rein vertraglich als Zusatzverdienst dazu.",
+      "Nein. Du bleibst komplett angestellt bei der Deutschen Post – gleicher Job, gleiches Gehalt, gleiche Tour. Unsere Zusatzzustellung ist rein vertraglich ein Zusatzverdienst.",
   },
   {
     question: "Ist das ein Jobwechsel oder eine Nebenbeschäftigung?",
     answer:
-      "Es ist reiner Zusatzverdienst neben deinem bestehenden Postboten-Job. Du meldest die Tätigkeit entsprechend an, wir stellen dir dafür eine ordentliche Abrechnung zur Verfügung.",
+      "Es ist reiner Zusatzverdienst neben deinem bestehenden Postboten-Job. Deine Nebentätigkeit meldest du wie üblich bei der Deutschen Post an – unsere Vergütung läuft getrennt davon, bar oder in Krypto.",
   },
   {
     question: "Brauche ich einen eigenen Zustellbezirk?",

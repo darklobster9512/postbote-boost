@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL, CONTACT_PHONE } from "./config";
+import { CONTACT_EMAIL, CONTACT_PHONE, PAYOUT_NOTE } from "./config";
 import { Logo } from "./Header";
 
 export default function Footer() {
@@ -13,6 +13,7 @@ export default function Footer() {
               Zusatzverdienst für Postboten und Briefträger der Deutschen Post – unsere Briefe
               laufen einfach mit auf deiner Tour.
             </p>
+            <p className="mt-3 max-w-xs text-sm font-semibold text-primary">{PAYOUT_NOTE}</p>
           </div>
 
           <div>
