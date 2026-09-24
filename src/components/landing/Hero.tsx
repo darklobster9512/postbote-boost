@@ -63,7 +63,7 @@ function BubbleItem({ bubble }: { bubble: Bubble }) {
     <div
       aria-hidden="true"
       className={`pointer-events-none absolute z-0 ${MIN_SCREEN_CLASSES[bubble.minScreen]}`}
-      style={{ top: bubble.top, left: bubble.left }}
+      style={{ top: bubble.top, left: bubble.left, opacity: bubble.opacity }}
     >
       <div
         className="overflow-hidden rounded-full border border-border/40 shadow-lg shadow-black/40"
