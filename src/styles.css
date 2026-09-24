@@ -7,7 +7,7 @@
 /*
  * Design system: DHL-inspiriertes Dark Theme.
  * DHL-Gelb (#FFCC00) als Primärfarbe, DHL-Rot (#D40511) als Akzent.
- * Alle Werte in oklch, gemappt über @theme inline.
+ * Alle Werte als CSS-Variablen, gemappt über @theme inline.
  */
 
 @theme inline {
@@ -54,7 +54,7 @@
   --popover: oklch(0.205 0.007 85);
   --popover-foreground: oklch(0.965 0.008 95);
 
-  --primary: #ffcc00; /* DHL-Gelb #FFCC00 */
+  --primary: #ffcc00; /* DHL-Gelb */
   --primary-foreground: oklch(0.17 0.01 85);
   --dhl-yellow: #ffcc00;
 
