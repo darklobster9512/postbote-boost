@@ -59,7 +59,7 @@ export default function Hero() {
           ))}
         </ul>
 
-        <dl className="mt-10 grid w-full max-w-xl grid-cols-3 gap-6 border-t border-border/60 pt-8">
+        <dl className="mt-10 grid w-full max-w-md grid-cols-2 gap-6 border-t border-border/60 pt-8">
           <div>
             <dt className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
               Verdienst
@@ -78,12 +78,6 @@ export default function Hero() {
             <dd className="mt-1 text-xl font-extrabold leading-tight text-foreground">
               Bar &amp; Krypto
             </dd>
-          </div>
-          <div>
-            <dt className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              Pakete
-            </dt>
-            <dd className="mt-1 text-xl font-extrabold leading-tight text-foreground">Nie</dd>
           </div>
         </dl>
         <p className="mt-3 max-w-lg text-xs text-muted-foreground">{PAYOUT_NOTE}</p>
