@@ -79,12 +79,6 @@ export default function Hero() {
               Bar &amp; Krypto
             </dd>
           </div>
-          <div>
-            <dt className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              Pakete
-            </dt>
-            <dd className="mt-1 text-xl font-extrabold leading-tight text-foreground">Nie</dd>
-          </div>
         </dl>
         <p className="mt-3 max-w-lg text-xs text-muted-foreground">{PAYOUT_NOTE}</p>
       </div>
