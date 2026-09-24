@@ -59,7 +59,7 @@ export default function Hero() {
           ))}
         </ul>
 
-        <dl className="mt-10 grid w-full max-w-xl grid-cols-3 gap-6 border-t border-border/60 pt-8">
+        <dl className="mt-10 grid w-full max-w-md grid-cols-2 gap-6 border-t border-border/60 pt-8">
           <div>
             <dt className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
               Verdienst
