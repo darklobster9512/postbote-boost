@@ -24,8 +24,8 @@ Die Seite nutzt aktuell Jost. Neu: **Roboto** – die serifenlose Google-Schrift
   an der Jost hart reinskriert ist.
 - **Projekt-Notiz**: Die Vorgabe „Font Jost" wird auf „Font Roboto" geändert, damit
   künftige Änderungen nicht aus Versehen die alte Schrift zurückbringen.
-- Roboto ist etwas breiter als Jost. Überschriften stehen currently mit
-  `tracking-tight`, das bleibt so und gleicht das weitgehend aus. Nach dem Umbau wird
+- Roboto ist etwas breiter als Jost. Die Überschriften stehen mit engerem Zeichenabstand,
+  das bleibt so und gleicht das weitgehend aus. Nach dem Umbau wird
   per Screenshot geprüft, ob die zweizeilige Hero-Überschrift weiterhin sauber in einer
   Linie steht – falls nicht, wird nur die Schriftgröße der Überschrift minimal angepasst.
 
