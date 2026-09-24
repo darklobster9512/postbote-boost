@@ -1,19 +1,20 @@
 import posthornAsset from "@/assets/posthorn.svg.asset.json";
 import bitcoinAsset from "@/assets/bitcoin.webp.asset.json";
-import cashAsset from "@/assets/cash.webp.asset.json";
 import { PAY_AMOUNT, PAY_INTERVAL, PAY_PREFIX, PAYOUT_NOTE } from "./config";
 
 const POSTHORN_URL = posthornAsset.url;
 const BITCOIN_URL = bitcoinAsset.url;
-const CASH_URL = cashAsset.url;
 
-type BubbleIcon = "posthorn" | "bitcoin" | "cash";
+type BubbleIcon = "posthorn" | "bitcoin";
 
 interface Bubble {
   icon: BubbleIcon;
   /** Prozentuale Position innerhalb der Hero-Section */
   top: string;
-  left: string;
+  /** Auf welcher Seite der Blase relativ zum Content */
+  side: "left" | "right";
+  /** Abstand der Blasenaußenseite von der Bildschirmmitte in px */
+  offset: number;
   /** Größe in px */
   size: number;
   /** Animationsdauer in s */
@@ -21,49 +22,53 @@ interface Bubble {
   /** Animations-Verzögerung in s */
   delay: number;
   /** Sichtbarkeit: ab welcher Tailwind-Breakpoint-Stufe die Bubble erscheint */
-  minScreen: "sm" | "lg";
+  minScreen: "lg" | "xl";
   /** Transparenz für Tiefenwirkung */
   opacity: number;
 }
 
-// Ringförmig um den zentrierten Content verteilt; die Mitte bleibt frei.
+// Nah am zentrierten Content verankert; die Mitte bleibt frei.
 const BUBBLES: Bubble[] = [
   // Linke Seite
-  { icon: "posthorn", top: "16%", left: "7%", size: 84, duration: 8, delay: 0, minScreen: "sm", opacity: 0.9 },
-  { icon: "cash", top: "38%", left: "12%", size: 56, duration: 9.5, delay: 1.2, minScreen: "lg", opacity: 0.55 },
-  { icon: "posthorn", top: "60%", left: "6%", size: 64, duration: 7, delay: 0.6, minScreen: "sm", opacity: 0.75 },
-  { icon: "bitcoin", top: "80%", left: "14%", size: 44, duration: 10, delay: 2.1, minScreen: "lg", opacity: 0.5 },
+  { icon: "posthorn", top: "14%", side: "left", offset: 396, size: 84, duration: 8, delay: 0, minScreen: "lg", opacity: 0.9 },
+  { icon: "bitcoin", top: "36%", side: "left", offset: 428, size: 56, duration: 9.5, delay: 1.2, minScreen: "lg", opacity: 0.6 },
+  { icon: "posthorn", top: "58%", side: "left", offset: 400, size: 64, duration: 7, delay: 0.6, minScreen: "lg", opacity: 0.8 },
+  { icon: "bitcoin", top: "80%", side: "left", offset: 452, size: 48, duration: 10, delay: 2.1, minScreen: "lg", opacity: 0.55 },
   // Rechte Seite
-  { icon: "cash", top: "13%", left: "86%", size: 64, duration: 8.5, delay: 0.3, minScreen: "sm", opacity: 0.85 },
-  { icon: "posthorn", top: "34%", left: "91%", size: 84, duration: 7.5, delay: 1.7, minScreen: "lg", opacity: 0.6 },
-  { icon: "bitcoin", top: "56%", left: "85%", size: 56, duration: 9, delay: 0.9, minScreen: "sm", opacity: 0.95 },
-  { icon: "cash", top: "78%", left: "90%", size: 44, duration: 6.5, delay: 2.6, minScreen: "lg", opacity: 0.5 },
+  { icon: "bitcoin", top: "12%", side: "right", offset: 408, size: 64, duration: 8.5, delay: 0.3, minScreen: "lg", opacity: 0.85 },
+  { icon: "posthorn", top: "33%", side: "right", offset: 396, size: 84, duration: 7.5, delay: 1.7, minScreen: "lg", opacity: 0.65 },
+  { icon: "bitcoin", top: "55%", side: "right", offset: 424, size: 56, duration: 9, delay: 0.9, minScreen: "lg", opacity: 0.95 },
+  { icon: "posthorn", top: "78%", side: "right", offset: 450, size: 48, duration: 6.5, delay: 2.6, minScreen: "lg", opacity: 0.5 },
   // Oberer Bereich
-  { icon: "posthorn", top: "4%", left: "30%", size: 44, duration: 9.5, delay: 0.4, minScreen: "lg", opacity: 0.65 },
-  { icon: "bitcoin", top: "3%", left: "64%", size: 56, duration: 7.2, delay: 1.4, minScreen: "sm", opacity: 0.8 },
-  { icon: "cash", top: "6%", left: "45%", size: 40, duration: 10.5, delay: 2.9, minScreen: "lg", opacity: 0.45 },
+  { icon: "posthorn", top: "4%", side: "left", offset: 445, size: 44, duration: 9.5, delay: 0.4, minScreen: "xl", opacity: 0.6 },
+  { icon: "bitcoin", top: "2%", side: "right", offset: 470, size: 56, duration: 7.2, delay: 1.4, minScreen: "xl", opacity: 0.8 },
+  { icon: "posthorn", top: "9%", side: "right", offset: 505, size: 40, duration: 10.5, delay: 2.9, minScreen: "xl", opacity: 0.45 },
   // Unterer Bereich
-  { icon: "bitcoin", top: "87%", left: "32%", size: 44, duration: 8.8, delay: 0.8, minScreen: "lg", opacity: 0.7 },
-  { icon: "posthorn", top: "88%", left: "66%", size: 56, duration: 9.8, delay: 1.9, minScreen: "lg", opacity: 0.55 },
+  { icon: "bitcoin", top: "86%", side: "left", offset: 470, size: 44, duration: 8.8, delay: 0.8, minScreen: "xl", opacity: 0.7 },
+  { icon: "posthorn", top: "88%", side: "right", offset: 505, size: 56, duration: 9.8, delay: 1.9, minScreen: "xl", opacity: 0.55 },
 ];
 
 const ICON_URLS: Record<BubbleIcon, string> = {
   posthorn: POSTHORN_URL,
   bitcoin: BITCOIN_URL,
-  cash: CASH_URL,
 };
 
 const MIN_SCREEN_CLASSES: Record<Bubble["minScreen"], string> = {
-  sm: "hidden sm:block",
   lg: "hidden lg:block",
+  xl: "hidden xl:block",
 };
 
 function BubbleItem({ bubble }: { bubble: Bubble }) {
+  const anchor =
+    bubble.side === "left"
+      ? { right: `calc(50% + ${bubble.offset}px)` }
+      : { left: `calc(50% + ${bubble.offset}px)` };
+
   return (
     <div
       aria-hidden="true"
       className={`pointer-events-none absolute z-0 ${MIN_SCREEN_CLASSES[bubble.minScreen]}`}
-      style={{ top: bubble.top, left: bubble.left, opacity: bubble.opacity }}
+      style={{ top: bubble.top, ...anchor, opacity: bubble.opacity }}
     >
       <div
         className="overflow-hidden rounded-full border border-border/40 shadow-lg shadow-black/40"
