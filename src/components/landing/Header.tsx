@@ -3,6 +3,7 @@ import { COMPANY_NAME } from "./config";
 const NAV_ITEMS = [
   { href: "#ablauf", label: "So funktioniert's" },
   { href: "#verguetung", label: "Vergütung" },
+  { href: "#auszahlung", label: "Auszahlung" },
   { href: "#voraussetzungen", label: "Voraussetzungen" },
   { href: "#faq", label: "FAQ" },
 ];
