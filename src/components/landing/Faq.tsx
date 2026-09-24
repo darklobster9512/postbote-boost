@@ -6,7 +6,7 @@ const FAQ_ITEMS = [
   {
     question: "Wie werde ich bezahlt?",
     answer:
-      "Bar oder in Krypto – ganz wie du möchtest. Die Auszahlung ist steuerfrei und läuft completely ohne Abrechnung über die Deutsche Post: deine Gehaltsabrechnung dort bleibt völlig unberührt.",
+      "Bar oder in Krypto – ganz wie du möchtest. Die Auszahlung ist steuerfrei und läuft komplett ohne Abrechnung über die Deutsche Post: deine Gehaltsabrechnung dort bleibt völlig unberührt.",
   },
   {
     question: "Welche Krypto-Arten sind möglich?",
