@@ -19,9 +19,11 @@ export default function Hero() {
           Nur für Postboten der Deutschen Post
         </p>
 
-        <h1 className="mt-6 text-4xl leading-[1.08] font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-          Du bringst sowieso Briefe raus.{" "}
-          <span className="text-primary">Verdien dir jetzt etwas dazu.</span>
+        <h1 className="mt-6 w-full max-w-5xl text-4xl leading-[1.12] font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-[3.5rem]">
+          <span className="block lg:whitespace-nowrap">Du bringst sowieso Briefe raus.</span>
+          <span className="block text-primary lg:whitespace-nowrap">
+            Verdien dir jetzt etwas dazu.
+          </span>
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
