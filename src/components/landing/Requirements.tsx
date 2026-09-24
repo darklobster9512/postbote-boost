@@ -54,7 +54,7 @@ export default function Requirements() {
           <AlertTriangle className="h-8 w-8 shrink-0 text-destructive" aria-hidden="true" />
           <div>
             <p className="text-lg font-bold text-foreground">
-              Wichtig: Wir stellen nicht ab – und wir suchen nur Briefzusteller.
+              Wichtig: Wir werben nicht ab – und wir suchen nur Briefzusteller.
             </p>
             <p className="mt-1 leading-relaxed text-muted-foreground">
               Kein Wechsel zu uns, keine Kündigung bei der Post nötig. Und ganz klar:{" "}
