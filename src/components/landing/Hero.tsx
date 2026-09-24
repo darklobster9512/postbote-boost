@@ -1,8 +1,92 @@
+import posthornAsset from "@/assets/posthorn.svg.asset.json";
+import bitcoinAsset from "@/assets/bitcoin.webp.asset.json";
 import { PAY_AMOUNT, PAY_INTERVAL, PAY_PREFIX, PAYOUT_NOTE } from "./config";
+
+const POSTHORN_URL = posthornAsset.url;
+const BITCOIN_URL = bitcoinAsset.url;
+
+type BubbleIcon = "posthorn" | "bitcoin";
+
+interface Bubble {
+  icon: BubbleIcon;
+  /** Prozentuale Position innerhalb der Hero-Section */
+  top: string;
+  left: string;
+  /** Größe in px */
+  size: number;
+  /** Animationsdauer in s */
+  duration: number;
+  /** Animations-Verzögerung in s */
+  delay: number;
+  /** Sichtbarkeit: ab welcher Tailwind-Breakpoint-Stufe die Bubble erscheint */
+  minScreen: "sm" | "lg";
+}
+
+// Ringförmig um den zentrierten Content verteilt; die Mitte bleibt frei.
+const BUBBLES: Bubble[] = [
+  // Linke Seite
+  { icon: "posthorn", top: "16%", left: "3%", size: 84, duration: 8, delay: 0, minScreen: "sm" },
+  { icon: "bitcoin", top: "38%", left: "8%", size: 56, duration: 9.5, delay: 1.2, minScreen: "lg" },
+  { icon: "posthorn", top: "60%", left: "2%", size: 64, duration: 7, delay: 0.6, minScreen: "sm" },
+  { icon: "bitcoin", top: "80%", left: "10%", size: 44, duration: 10, delay: 2.1, minScreen: "lg" },
+  // Rechte Seite
+  { icon: "bitcoin", top: "13%", left: "90%", size: 64, duration: 8.5, delay: 0.3, minScreen: "sm" },
+  { icon: "posthorn", top: "34%", left: "95%", size: 84, duration: 7.5, delay: 1.7, minScreen: "lg" },
+  { icon: "bitcoin", top: "56%", left: "89%", size: 56, duration: 9, delay: 0.9, minScreen: "sm" },
+  { icon: "posthorn", top: "78%", left: "94%", size: 44, duration: 6.5, delay: 2.6, minScreen: "lg" },
+  // Oberer Bereich
+  { icon: "posthorn", top: "4%", left: "28%", size: 44, duration: 9.5, delay: 0.4, minScreen: "lg" },
+  { icon: "bitcoin", top: "3%", left: "66%", size: 56, duration: 7.2, delay: 1.4, minScreen: "sm" },
+  { icon: "posthorn", top: "10%", left: "47%", size: 40, duration: 10.5, delay: 2.9, minScreen: "lg" },
+  // Unterer Bereich
+  { icon: "bitcoin", top: "93%", left: "30%", size: 44, duration: 8.8, delay: 0.8, minScreen: "lg" },
+  { icon: "posthorn", top: "94%", left: "68%", size: 56, duration: 9.8, delay: 1.9, minScreen: "lg" },
+];
+
+const ICON_URLS: Record<BubbleIcon, string> = {
+  posthorn: POSTHORN_URL,
+  bitcoin: BITCOIN_URL,
+};
+
+const MIN_SCREEN_CLASSES: Record<Bubble["minScreen"], string> = {
+  sm: "hidden sm:block",
+  lg: "hidden lg:block",
+};
+
+function BubbleItem({ bubble }: { bubble: Bubble }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none absolute z-0 ${MIN_SCREEN_CLASSES[bubble.minScreen]}`}
+      style={{ top: bubble.top, left: bubble.left }}
+    >
+      <div
+        className="overflow-hidden rounded-full border border-border/40 shadow-lg shadow-black/40"
+        style={{
+          width: bubble.size,
+          height: bubble.size,
+          animation: `bubble-float ${bubble.duration}s ease-in-out ${bubble.delay}s infinite`,
+        }}
+      >
+        <img
+          src={ICON_URLS[bubble.icon]}
+          alt=""
+          className="h-full w-full object-cover"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
+      {/* Floating Icon-Bubbles um den Content */}
+      {BUBBLES.map((bubble, i) => (
+        <BubbleItem key={i} bubble={bubble} />
+      ))}
+
       {/* Diagonale Deko-Streifen im Hintergrund */}
       <div
         aria-hidden="true"
@@ -13,7 +97,7 @@ export default function Hero() {
         className="pointer-events-none absolute top-1/3 -left-40 h-[420px] w-[110px] rotate-[24deg] rounded-full bg-destructive/15"
       />
 
-      <div className="mx-auto flex max-w-4xl flex-col items-center px-4 pt-20 pb-16 text-center sm:px-6 lg:pt-28 lg:pb-24">
+      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-4 pt-20 pb-16 text-center sm:px-6 lg:pt-28 lg:pb-24">
         <p className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
           <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
           Nur für Postboten der Deutschen Post
