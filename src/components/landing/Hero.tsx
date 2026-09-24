@@ -20,8 +20,8 @@ export default function Hero() {
         </p>
 
         <h1 className="mt-6 text-4xl leading-[1.08] font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-          Du bringst sowieso Briefe raus.{" "}
-          <span className="text-primary">Verdien dir jetzt etwas dazu.</span>
+          <span className="block">Du bringst sowieso Briefe raus.</span>
+          <span className="block text-primary">Verdien dir jetzt etwas dazu.</span>
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
