@@ -27,7 +27,7 @@ Ein Gelb-Wert im Projekt, und der ist nachweislich `#FFCC00`. Buttons, Überschr
 ## Technische Details
 
 - Datei: `src/styles.css` (einzige Änderung), Zeilen im `:root`- und `.dark`-Block.
-- Die `@theme inline`-Zuordnung `--color-primary: var(--primary)` bleibt unverändert;_opacity_-Stufen wie `bg-primary/15` funktionieren mit Hex-Werten einwandfrei.
+- Die `@theme inline`-Zuordnung `--color-primary: var(--primary)` bleibt unverändert; Transparenz-Stufen wie `bg-primary/15` funktionieren mit Hex-Werten einwandfrei.
 - Prüfung nach dem Edit: Build-Log frei von Fehlern, und im laufenden Preview per Browser ausgelesen: Hintergrund des Haupt-Buttons und Farbe der zweiten Überschrift-Zeile = `rgb(255, 204, 0)`, Streifen-Band ebenfalls in diesem Ton, keine Konsolen-Fehler, keine abgeschnittenen Texte.
 
 ## Hinweis
