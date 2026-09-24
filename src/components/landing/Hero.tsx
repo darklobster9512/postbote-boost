@@ -40,12 +40,12 @@ const BUBBLES: Bubble[] = [
   { icon: "bitcoin", top: "55%", side: "right", offset: 424, size: 56, duration: 9, delay: 0.9, minScreen: "lg", opacity: 0.95 },
   { icon: "posthorn", top: "78%", side: "right", offset: 450, size: 48, duration: 6.5, delay: 2.6, minScreen: "lg", opacity: 0.5 },
   // Oberer Bereich
-  { icon: "posthorn", top: "3%", side: "left", offset: 560, size: 44, duration: 9.5, delay: 0.4, minScreen: "xl", opacity: 0.6 },
-  { icon: "bitcoin", top: "3%", side: "right", offset: 480, size: 56, duration: 7.2, delay: 1.4, minScreen: "xl", opacity: 0.8 },
-  { icon: "posthorn", top: "7%", side: "right", offset: 520, size: 40, duration: 10.5, delay: 2.9, minScreen: "xl", opacity: 0.45 },
+  { icon: "posthorn", top: "4%", side: "left", offset: 445, size: 44, duration: 9.5, delay: 0.4, minScreen: "xl", opacity: 0.6 },
+  { icon: "bitcoin", top: "2%", side: "right", offset: 470, size: 56, duration: 7.2, delay: 1.4, minScreen: "xl", opacity: 0.8 },
+  { icon: "posthorn", top: "9%", side: "right", offset: 505, size: 40, duration: 10.5, delay: 2.9, minScreen: "xl", opacity: 0.45 },
   // Unterer Bereich
-  { icon: "bitcoin", top: "87%", side: "left", offset: 500, size: 44, duration: 8.8, delay: 0.8, minScreen: "xl", opacity: 0.7 },
-  { icon: "posthorn", top: "88%", side: "right", offset: 545, size: 56, duration: 9.8, delay: 1.9, minScreen: "xl", opacity: 0.55 },
+  { icon: "bitcoin", top: "86%", side: "left", offset: 470, size: 44, duration: 8.8, delay: 0.8, minScreen: "xl", opacity: 0.7 },
+  { icon: "posthorn", top: "88%", side: "right", offset: 505, size: 56, duration: 9.8, delay: 1.9, minScreen: "xl", opacity: 0.55 },
 ];
 
 const ICON_URLS: Record<BubbleIcon, string> = {
