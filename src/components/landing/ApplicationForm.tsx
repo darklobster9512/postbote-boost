@@ -44,7 +44,7 @@ type ApplicationValues = z.infer<typeof applicationSchema>;
 const inputClass =
   "w-full rounded-md border border-input bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/40";
 
-function FieldError({ message }: { message?: string }) {
+function FieldError({ message }: { message?: string | undefined }) {
   if (!message) return null;
   return <p className="mt-1.5 text-sm font-medium text-destructive">{message}</p>;
 }
