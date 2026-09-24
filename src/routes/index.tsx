@@ -4,6 +4,7 @@ import Header from "@/components/landing/Header";
 import Hero from "@/components/landing/Hero";
 import HowItWorks from "@/components/landing/HowItWorks";
 import Compensation from "@/components/landing/Compensation";
+import Payout from "@/components/landing/Payout";
 import Requirements from "@/components/landing/Requirements";
 import Faq from "@/components/landing/Faq";
 import ApplicationForm from "@/components/landing/ApplicationForm";
@@ -13,21 +14,22 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "Postboten gesucht: Zusatzverdienst mit Briefzustellung – ZusatzKurier",
+        title:
+          "Postboten gesucht: bis zu 10.000 € im Monat – bar oder in Krypto, steuerfrei",
       },
       {
         name: "description",
         content:
-          "Du bist Postbote bei der Deutschen Post? Liefern unsere Briefe einfach auf deiner Tour mit und verdien dir jeden Monat etwas dazu. Kein Jobwechsel, keine Pakete – nur für angestellte Briefträger.",
+          "Du bist Postbote bei der Deutschen Post? Liefern unsere Briefe einfach auf deiner Tour mit und verdien dir bis zu 10.000 € im Monat dazu. Auszahlung bar oder in Krypto, steuerfrei und ohne Abrechnung über die Post. Kein Jobwechsel, keine Pakete.",
       },
       {
         property: "og:title",
-        content: "Postboten gesucht: Zusatzverdienst mit Briefzustellung – ZusatzKurier",
+        content: "Postboten gesucht: bis zu 10.000 € im Monat – bar oder in Krypto, steuerfrei",
       },
       {
         property: "og:description",
         content:
-          "Angestellte Postboten der Deutschen Post verdienen mit unserer Zusatzzustellung etwas dazu – ohne Jobwechsel, ohne Pakete. Jetzt kurz bewerben.",
+          "Angestellte Postboten der Deutschen Post verdienen mit unserer Zusatzzustellung bis zu 10.000 € im Monat dazu – Auszahlung bar oder in Krypto, steuerfrei, ohne Jobwechsel und ohne Pakete.",
       },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
@@ -46,6 +48,7 @@ function LandingPage() {
         <Hero />
         <HowItWorks />
         <Compensation />
+        <Payout />
         <Requirements />
         <Faq />
         <ApplicationForm />

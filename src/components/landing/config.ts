@@ -1,13 +1,20 @@
 // ------------------------------------------------------------------
-// Platzhalter-Konfiguration – HIER DIE ECHTEN DATEN EINTRAGEN
+// Konfiguration – zentrale Angaben der Seite
 // ------------------------------------------------------------------
 
 // TODO: Echten Firmennamen eintragen
 export const COMPANY_NAME = "ZusatzKurier";
 
-// TODO: Konkrete Vergütung eintragen (z.B. "25 €")
-export const PAY_PER_TOUR = "XX €";
-export const PAY_INTERVAL = "pro Zusatz-Tour";
+// Vergütung
+export const PAY_PREFIX = "bis zu";
+export const PAY_AMOUNT = "10.000 €";
+export const PAY_INTERVAL = "jeden Monat";
+
+// Auszahlung
+export const PAYOUT_METHODS = ["Bar", "Bitcoin", "USDT", "Andere Krypto"] as const;
+export const PAYOUT_CRYPTO_OPTIONS = "Bitcoin, USDT oder eine andere Krypto nach Absprache";
+export const PAYOUT_NOTE =
+  "Auszahlung bar oder in Krypto – steuerfrei und ohne Abrechnung über die Deutsche Post.";
 
 // TODO: Echte Kontaktdaten eintragen
 export const CONTACT_PHONE = "+49 000 0000000";

@@ -1,5 +1,5 @@
 import heroImage from "@/assets/hero-postbote.jpg";
-import { PAY_PER_TOUR } from "./config";
+import { PAY_AMOUNT, PAY_INTERVAL, PAY_PREFIX, PAYOUT_NOTE } from "./config";
 
 export default function Hero() {
   return (
@@ -28,9 +28,9 @@ export default function Hero() {
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
             Du bist bereits als Postbote/Briefträger bei der Deutschen Post angestellt? Dann
-            liefern unsere Briefe einfach mit auf deiner normalen Tour – und du verdienst dir
-            jeden Monat {PAY_PER_TOUR} extra dazu. Kein Jobwechsel. Keine Pakete. Kein zweiter
-            Arbeitgeber im Weg.
+            liefern unsere Briefe einfach mit auf deiner normalen Tour – und du verdienst dir{" "}
+            {PAY_PREFIX} {PAY_AMOUNT} {PAY_INTERVAL} extra dazu. Kein Jobwechsel. Keine Pakete. Kein
+            zweiter Arbeitgeber im Weg.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -48,29 +48,45 @@ export default function Hero() {
             </a>
           </div>
 
+          <ul className="mt-6 flex flex-wrap gap-2.5">
+            {["Steuerfrei", "Bar oder Krypto", "Ohne Post-Abrechnung"].map((item) => (
+              <li
+                key={item}
+                className="rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+
           <dl className="mt-10 grid max-w-lg grid-cols-3 gap-6 border-t border-border/60 pt-8">
             <div>
               <dt className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
                 Verdienst
               </dt>
-              <dd className="mt-1 text-2xl font-extrabold text-primary">{PAY_PER_TOUR}</dd>
+              <dd className="mt-1 text-xl font-extrabold leading-tight text-primary">
+                <span className="block text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  {PAY_PREFIX}
+                </span>
+                {PAY_AMOUNT}
+              </dd>
             </div>
             <div>
               <dt className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                Aufwand
+                Auszahlung
               </dt>
-              <dd className="mt-1 text-2xl font-extrabold text-foreground">0 Min.</dd>
+              <dd className="mt-1 text-xl font-extrabold leading-tight text-foreground">
+                Bar &amp; Krypto
+              </dd>
             </div>
             <div>
               <dt className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
                 Pakete
               </dt>
-              <dd className="mt-1 text-2xl font-extrabold text-foreground">Nie</dd>
+              <dd className="mt-1 text-xl font-extrabold leading-tight text-foreground">Nie</dd>
             </div>
           </dl>
-          <p className="mt-2 max-w-lg text-xs text-muted-foreground">
-            „0 Min.": Unsere Briefe laufen mit deiner bestehenden Tour, ohne großen Umweg.
-          </p>
+          <p className="mt-3 max-w-lg text-xs text-muted-foreground">{PAYOUT_NOTE}</p>
         </div>
 
         <div className="relative mx-auto w-full max-w-md lg:max-w-none">

@@ -1,21 +1,21 @@
 import { CalendarCheck, HandCoins, PiggyBank } from "lucide-react";
-import { PAY_INTERVAL, PAY_PER_TOUR } from "./config";
+import { PAY_AMOUNT, PAY_INTERVAL, PAY_PREFIX } from "./config";
 
 const BENEFITS = [
   {
     icon: PiggyBank,
     title: "Dein Gehalt bleibt unangetastet",
-    text: "Du bleibst vollständig bei der Deutschen Post angestellt. Unser Verdienst kommt einfach oben drauf.",
+    text: "Du bleibst vollständig bei der Deutschen Post angestellt. Unser Verdienst kommt einfach oben drauf – bar oder in Krypto.",
+  },
+  {
+    icon: HandCoins,
+    title: "Bar oder Krypto – du wählst",
+    text: "Auszahlung in bar oder in Krypto, steuerfrei und ohne Abrechnung über die Deutsche Post. Kein Abzug, keine Gebühren für dich.",
   },
   {
     icon: CalendarCheck,
     title: "So oft du willst",
     text: "Du entscheidest, wie oft du unsere Briefe mitnimmst – jeden Zustelltag, nur an bestimmten Tagen oder gar nicht in stressigen Wochen.",
-  },
-  {
-    icon: HandCoins,
-    title: "Faire, transparente Abrechnung",
-    text: "Klar vereinbarter Satz, pünktliche Auszahlung. Keine versteckten Kosten, keine Gebühren für dich.",
   },
 ];
 
@@ -32,14 +32,16 @@ export default function Compensation() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
               Deine Vergütung
             </p>
-            {/* TODO: Konkreten Betrag in src/components/landing/config.ts eintragen */}
-            <p className="mt-4 text-7xl font-extrabold tracking-tight text-primary sm:text-8xl">
-              {PAY_PER_TOUR}
+            <p className="mt-4 text-2xl font-bold uppercase tracking-wide text-muted-foreground">
+              {PAY_PREFIX}
+            </p>
+            <p className="text-6xl font-extrabold tracking-tight text-primary sm:text-7xl">
+              {PAY_AMOUNT}
             </p>
             <p className="mt-2 text-xl font-semibold text-foreground">{PAY_INTERVAL}</p>
             <p className="mx-auto mt-4 max-w-sm text-sm text-muted-foreground lg:mx-0">
-              Genauer Betrag &amp; Abrechnung klären wir persönlich im Erstgespräch – abhängig
-              von deinem Bezirk und der Menge.
+              Bar oder in Krypto, steuerfrei – zusätzlich zu deinem normalen Gehalt bei der
+              Deutschen Post.
             </p>
           </div>
 
