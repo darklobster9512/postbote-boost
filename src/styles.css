@@ -7,7 +7,7 @@
 /*
  * Design system: DHL-inspiriertes Dark Theme.
  * DHL-Gelb (#FFCC00) als Primärfarbe, DHL-Rot (#D40511) als Akzent.
- * Alle Werte in oklch, gemappt über @theme inline.
+ * Alle Werte als CSS-Variablen, gemappt über @theme inline.
  */
 
 @theme inline {
@@ -54,9 +54,9 @@
   --popover: oklch(0.205 0.007 85);
   --popover-foreground: oklch(0.965 0.008 95);
 
-  --primary: oklch(0.865 0.184 94.9); /* DHL-Gelb #FFCC00 */
+  --primary: #ffcc00; /* DHL-Gelb */
   --primary-foreground: oklch(0.17 0.01 85);
-  --dhl-yellow: oklch(0.865 0.184 94.9);
+  --dhl-yellow: #ffcc00;
 
   --secondary: oklch(0.26 0.008 85);
   --secondary-foreground: oklch(0.965 0.008 95);
@@ -71,9 +71,9 @@
 
   --border: oklch(0.3 0.008 85);
   --input: oklch(0.3 0.008 85);
-  --ring: oklch(0.865 0.184 94.9);
+  --ring: #ffcc00;
 
-  --chart-1: oklch(0.865 0.184 94.9);
+  --chart-1: #ffcc00;
   --chart-2: oklch(0.545 0.216 27.5);
   --chart-3: oklch(0.7 0.012 90);
   --chart-4: oklch(0.45 0.09 95);
@@ -81,12 +81,12 @@
 
   --sidebar: oklch(0.205 0.007 85);
   --sidebar-foreground: oklch(0.965 0.008 95);
-  --sidebar-primary: oklch(0.865 0.184 94.9);
+  --sidebar-primary: #ffcc00;
   --sidebar-primary-foreground: oklch(0.17 0.01 85);
   --sidebar-accent: oklch(0.26 0.008 85);
   --sidebar-accent-foreground: oklch(0.965 0.008 95);
   --sidebar-border: oklch(0.3 0.008 85);
-  --sidebar-ring: oklch(0.865 0.184 94.9);
+  --sidebar-ring: #ffcc00;
 }
 
 /* Die Seite ist durchgehend dunkel – .dark entspricht :root. */
@@ -97,7 +97,7 @@
   --card-foreground: oklch(0.965 0.008 95);
   --popover: oklch(0.205 0.007 85);
   --popover-foreground: oklch(0.965 0.008 95);
-  --primary: oklch(0.865 0.184 94.9);
+  --primary: #ffcc00;
   --primary-foreground: oklch(0.17 0.01 85);
   --secondary: oklch(0.26 0.008 85);
   --secondary-foreground: oklch(0.965 0.008 95);
@@ -109,7 +109,7 @@
   --destructive-foreground: oklch(0.98 0.005 95);
   --border: oklch(0.3 0.008 85);
   --input: oklch(0.3 0.008 85);
-  --ring: oklch(0.865 0.184 94.9);
+  --ring: #ffcc00;
 }
 
 @layer base {
