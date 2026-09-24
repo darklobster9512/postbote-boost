@@ -37,7 +37,7 @@ const BUBBLES: Bubble[] = [
   // Oberer Bereich
   { icon: "posthorn", top: "4%", left: "28%", size: 44, duration: 9.5, delay: 0.4, minScreen: "lg" },
   { icon: "bitcoin", top: "3%", left: "66%", size: 56, duration: 7.2, delay: 1.4, minScreen: "sm" },
-  { icon: "posthorn", top: "10%", left: "47%", size: 40, duration: 10.5, delay: 2.9, minScreen: "lg" },
+  { icon: "posthorn", top: "6%", left: "43%", size: 40, duration: 10.5, delay: 2.9, minScreen: "lg" },
   // Unterer Bereich
   { icon: "bitcoin", top: "87%", left: "30%", size: 44, duration: 8.8, delay: 0.8, minScreen: "lg" },
   { icon: "posthorn", top: "88%", left: "68%", size: 56, duration: 9.8, delay: 1.9, minScreen: "lg" },
