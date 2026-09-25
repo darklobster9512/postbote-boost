@@ -46,7 +46,7 @@ function LandingPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       <main>
-        <Reveal immediate><Hero /></Reveal>
+        <Hero />
         <Reveal><HowItWorks /></Reveal>
         <Reveal><Compensation /></Reveal>
         <Reveal><Payout /></Reveal>

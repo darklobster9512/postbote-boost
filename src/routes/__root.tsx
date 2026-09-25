@@ -116,7 +116,7 @@ function RootShell({ children }: { children: ReactNode }) {
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){var d=document.documentElement;d.setAttribute('data-anim','');setTimeout(function(){d.removeAttribute('data-anim')},4000)}}catch(e){}",
+              "try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){var d=document.documentElement;d.setAttribute('data-anim','');setTimeout(function(){if(!d.hasAttribute('data-anim-ready'))d.removeAttribute('data-anim')},6000)}}catch(e){}",
           }}
         />
         <HeadContent />

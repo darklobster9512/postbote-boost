@@ -1,3 +1,4 @@
+import type React from "react";
 const dpLogo = "/images/deutsche-post-logo.svg";
 import { PAY_AMOUNT, PAY_INTERVAL, PAY_PREFIX, PAYOUT_NOTE } from "./config";
 
@@ -18,28 +19,29 @@ export default function Hero() {
         <img
           src={dpLogo}
           alt="Deutsche Post"
-          className="w-[200px] max-w-full rounded-xl sm:w-[260px]"
+          className="hero-anim w-[200px] max-w-full rounded-xl sm:w-[260px]"
+          style={{ "--i": 1 } as React.CSSProperties}
           width={984}
           height={218}
         />
 
         <h1 className="mt-8 w-full max-w-5xl text-balance text-4xl leading-[1.12] font-extrabold tracking-tight text-foreground max-[367px]:text-3xl sm:text-5xl lg:text-[3.5rem]">
-          <span className="block lg:whitespace-nowrap">Es ändert sich nichts.</span>
-          <span className="block text-primary lg:whitespace-nowrap">
+          <span className="hero-anim block lg:whitespace-nowrap" style={{ "--i": 2 } as React.CSSProperties}>Es ändert sich nichts.</span>
+          <span className="hero-anim block text-primary lg:whitespace-nowrap" style={{ "--i": 3 } as React.CSSProperties}>
             Nur dein Einkommen{" "}
             <br className="hidden max-[655px]:block" />
             wächst.
           </span>
         </h1>
 
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+        <p style={{ "--i": 4 } as React.CSSProperties} className="hero-anim mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
           Du bist bereits als Postbote/Briefträger bei der Deutschen Post angestellt? Dann
           liefern unsere Briefe einfach mit auf deiner normalen Tour – und du verdienst dir{" "}
           {PAY_PREFIX} {PAY_AMOUNT} {PAY_INTERVAL} extra dazu. Kein Jobwechsel. Keine Pakete. Kein
           zweiter Arbeitgeber im Weg.
         </p>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <div style={{ "--i": 5 } as React.CSSProperties} className="hero-anim mt-8 flex flex-wrap items-center justify-center gap-4">
           <a
             href="#bewerbung"
             className="rounded-md bg-primary px-7 py-3.5 text-base font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-primary/90"
@@ -54,7 +56,7 @@ export default function Hero() {
           </a>
         </div>
 
-        <ul className="mt-6 flex flex-wrap justify-center gap-2.5">
+        <ul style={{ "--i": 6 } as React.CSSProperties} className="hero-anim mt-6 flex flex-wrap justify-center gap-2.5">
           {["Steuerfrei", "Bar oder Krypto", "Ohne Post-Abrechnung"].map((item) => (
             <li
               key={item}
@@ -65,7 +67,7 @@ export default function Hero() {
           ))}
         </ul>
 
-        <dl className="mt-10 grid w-full max-w-md grid-cols-2 gap-6 border-t border-border/60 pt-8">
+        <dl style={{ "--i": 7 } as React.CSSProperties} className="hero-anim mt-10 grid w-full max-w-md grid-cols-2 gap-6 border-t border-border/60 pt-8">
           <div>
             <dt className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
               Verdienst
