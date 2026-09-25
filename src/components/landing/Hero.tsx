@@ -27,7 +27,7 @@ export default function Hero() {
           <span className="block lg:whitespace-nowrap">Es ändert sich nichts.</span>
           <span className="block text-primary lg:whitespace-nowrap">
             Nur dein Einkommen{" "}
-            <br className="sm:hidden" />
+            <br className="hidden max-[655px]:block" />
             wächst.
           </span>
         </h1>
