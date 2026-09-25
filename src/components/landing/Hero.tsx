@@ -23,10 +23,12 @@ export default function Hero() {
           height={218}
         />
 
-        <h1 className="mt-8 w-full max-w-5xl text-balance text-4xl leading-[1.12] font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-[3.5rem]">
+        <h1 className="mt-8 w-full max-w-5xl text-balance text-4xl leading-[1.12] font-extrabold tracking-tight text-foreground max-[367px]:text-3xl sm:text-5xl lg:text-[3.5rem]">
           <span className="block lg:whitespace-nowrap">Es ändert sich nichts.</span>
           <span className="block text-primary lg:whitespace-nowrap">
-            Nur dein Einkommen wächst.
+            Nur dein Einkommen{" "}
+            <br className="hidden max-[655px]:block" />
+            wächst.
           </span>
         </h1>
 
