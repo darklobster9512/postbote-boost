@@ -8,19 +8,12 @@ const NAV_ITEMS = [
   { href: "#faq", label: "FAQ" },
 ];
 
-export function Logo({ compact = false }: { compact?: boolean }) {
+export function Logo() {
   return (
-    <a href="#top" className="flex items-center gap-2.5" aria-label={COMPANY_NAME}>
-      <span className="flex items-end gap-[3px]" aria-hidden="true">
-        <span className="h-3.5 w-1.5 -skew-x-[20deg] bg-primary" />
-        <span className="h-6 w-1.5 -skew-x-[20deg] bg-primary" />
-        <span className="h-4.5 w-1.5 -skew-x-[20deg] bg-destructive" />
+    <a href="#top" aria-label={COMPANY_NAME}>
+      <span className="text-lg font-bold tracking-[0.18em] text-foreground">
+        {COMPANY_NAME.toUpperCase()}
       </span>
-      {!compact && (
-        <span className="text-lg font-bold tracking-[0.18em] text-foreground">
-          {COMPANY_NAME.toUpperCase()}
-        </span>
-      )}
     </a>
   );
 }
