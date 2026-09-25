@@ -4,6 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle2, Send } from "lucide-react";
 import { PAYOUT_METHODS, PAYOUT_NOTE } from "./config";
+import { supabase } from "@/integrations/supabase/client";
 
 const applicationSchema = z.object({
   name: z
@@ -40,10 +41,6 @@ const applicationSchema = z.object({
 
 type ApplicationValues = z.infer<typeof applicationSchema>;
 
-// ------------------------------------------------------------------
-// TODO: Formular ist aktuell nur Demo (keine Übertragung der Daten).
-// Später echtes Ziel hinterlegen (z.B. E-Mail oder Webhook).
-// ------------------------------------------------------------------
 
 const inputClass =
   "w-full rounded-md border border-input bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/40";
@@ -55,6 +52,7 @@ function FieldError({ message }: { message?: string | undefined }) {
 
 export default function ApplicationForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -71,9 +69,22 @@ export default function ApplicationForm() {
     },
   });
 
-  const onSubmit = async (_values: ApplicationValues) => {
-    // Demo: Daten werden nicht übertragen, nur Bestätigung angezeigt.
-    await new Promise((resolve) => setTimeout(resolve, 600));
+  const onSubmit = async (values: ApplicationValues) => {
+    setSubmitError(null);
+    const { error } = await supabase.from("applications").insert({
+      name: values.name,
+      email: values.email,
+      phone: values.phone,
+      area: values.area,
+      payout: values.payout,
+      message: values.message ? values.message : null,
+      is_postbote: values.isPostbote,
+    });
+    if (error) {
+      console.error(error);
+      setSubmitError("Deine Bewerbung konnte nicht gesendet werden. Bitte versuche es gleich noch einmal.");
+      return;
+    }
     setSubmitted(true);
   };
 
