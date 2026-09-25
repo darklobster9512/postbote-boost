@@ -1,9 +1,5 @@
 import { useEffect, useRef, type ReactNode } from "react";
 
-// Blocks inside a section that fade in one after another.
-const ITEM_SELECTOR =
-  "h1,h2,h3,p,img,form,details,dl>div,ul>li,ol>li,.grid>*,a[href],button";
-
 export default function Reveal({ children, immediate = false }: { children: ReactNode; immediate?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -12,18 +8,10 @@ export default function Reveal({ children, immediate = false }: { children: Reac
     if (!root) return;
     const html = document.documentElement;
     if (!html.hasAttribute("data-anim")) {
-      root.classList.add("rv-ready", "rv-in");
+      root.classList.add("rv-in");
       return;
     }
 
-    // Pick outermost matching blocks only, so nothing animates twice.
-    const all = Array.from(root.querySelectorAll<HTMLElement>(ITEM_SELECTOR));
-    const items = all.filter((el) => !all.some((o) => o !== el && o.contains(el)));
-    items.forEach((el, i) => {
-      el.classList.add("rv-item");
-      el.style.setProperty("--i", String(Math.min(i, 12)));
-    });
-    root.classList.add("rv-ready");
     (window as unknown as { __rvReady?: boolean }).__rvReady = true;
 
     const show = () => root.classList.add("rv-in");
@@ -38,7 +26,7 @@ export default function Reveal({ children, immediate = false }: { children: Reac
           io.disconnect();
         }
       },
-      { threshold: 0.02, rootMargin: "0px 0px 8% 0px" },
+      { threshold: 0.01, rootMargin: "0px 0px -10% 0px" },
     );
     requestAnimationFrame(() => io.observe(root));
     return () => {
@@ -47,7 +35,7 @@ export default function Reveal({ children, immediate = false }: { children: Reac
   }, [immediate]);
 
   return (
-    <div ref={ref} data-reveal="">
+    <div ref={ref} data-reveal="" className={immediate ? "rv-in" : undefined}>
       {children}
     </div>
   );
