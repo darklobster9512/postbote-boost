@@ -243,6 +243,11 @@ export default function ApplicationForm() {
             <FieldError message={errors.isPostbote?.message} />
           </div>
 
+          {submitError && (
+            <p role="alert" className="mt-6 text-sm font-medium text-destructive">
+              {submitError}
+            </p>
+          )}
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
             <button
               type="submit"
