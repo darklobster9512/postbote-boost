@@ -40,7 +40,7 @@ const FAQ_ITEMS = [
   {
     question: "Ist das eine offizielle Seite der Deutschen Post oder DHL?",
     answer:
-      "Nein. Wir sind ein unabhängiges Zustellunternehmen und stehen in keiner Verbindung zur Deutschen Post AG oder DHL. Der Stil dieser Seite ist eine reine gestalterische Anlehnung.",
+      "Nein. Wir sind ein eigenes Zustellunternehmen.",
   },
 ];
 

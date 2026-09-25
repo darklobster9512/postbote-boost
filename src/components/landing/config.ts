@@ -16,6 +16,6 @@ export const PAYOUT_CRYPTO_OPTIONS = "Bitcoin, USDT oder eine andere Krypto nach
 export const PAYOUT_NOTE =
   "Auszahlung bar oder in Krypto – steuerfrei und ohne Abrechnung über die Deutsche Post.";
 
-// TODO: Echte Kontaktdaten eintragen
-export const CONTACT_PHONE = "+49 000 0000000";
-export const CONTACT_EMAIL = "bewerbung@beispiel.de";
+// Kontakt
+export const TELEGRAM_URL = "https://t.me/call_agency";
+export const TELEGRAM_HANDLE = "@call_agency";
