@@ -1,32 +1,55 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
-export default function Reveal({ children }: { children: ReactNode }) {
+// Blocks inside a section that fade in one after another.
+const ITEM_SELECTOR =
+  "h1,h2,h3,p,img,form,details,dl>div,ul>li,ol>li,.grid>*,a[href],button";
+
+export default function Reveal({ children, immediate = false }: { children: ReactNode; immediate?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [armed, setArmed] = useState(false);
-  const [shown, setShown] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+    const root = ref.current;
+    if (!root) return;
+    const html = document.documentElement;
+    if (!html.hasAttribute("data-anim")) {
+      root.classList.add("rv-ready", "rv-in");
       return;
     }
-    setArmed(true);
+
+    // Pick outermost matching blocks only, so nothing animates twice.
+    const all = Array.from(root.querySelectorAll<HTMLElement>(ITEM_SELECTOR));
+    const items = all.filter((el) => !all.some((o) => o !== el && o.contains(el)));
+    items.forEach((el, i) => {
+      el.classList.add("rv-item");
+      el.style.setProperty("--i", String(Math.min(i, 12)));
+    });
+    root.classList.add("rv-ready");
+    html.setAttribute("data-anim-ready", "");
+
+    const show = () => root.classList.add("rv-in");
+    const safety = window.setTimeout(show, 3000);
+    if (immediate) {
+      requestAnimationFrame(() => requestAnimationFrame(show));
+      return () => clearTimeout(safety);
+    }
     const io = new IntersectionObserver(
       (entries) => {
         if (entries.some((e) => e.isIntersecting)) {
-          setShown(true);
+          show();
           io.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -10% 0px" },
+      { threshold: 0.08, rootMargin: "0px 0px -8% 0px" },
     );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+    io.observe(root);
+    return () => {
+      io.disconnect();
+      clearTimeout(safety);
+    };
+  }, [immediate]);
 
   return (
-    <div ref={ref} className={armed ? (shown ? "reveal reveal-in" : "reveal") : undefined}>
+    <div ref={ref} data-reveal="">
       {children}
     </div>
   );
