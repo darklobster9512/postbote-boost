@@ -9,6 +9,7 @@ import Requirements from "@/components/landing/Requirements";
 import Faq from "@/components/landing/Faq";
 import ApplicationForm from "@/components/landing/ApplicationForm";
 import Footer from "@/components/landing/Footer";
+import Reveal from "@/components/landing/Reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -45,15 +46,15 @@ function LandingPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       <main>
-        <Hero />
-        <HowItWorks />
-        <Compensation />
-        <Payout />
-        <Requirements />
-      <ApplicationForm />
-      <Faq />
+        <Reveal><Hero /></Reveal>
+        <Reveal><HowItWorks /></Reveal>
+        <Reveal><Compensation /></Reveal>
+        <Reveal><Payout /></Reveal>
+        <Reveal><Requirements /></Reveal>
+      <Reveal><ApplicationForm /></Reveal>
+      <Reveal><Faq /></Reveal>
       </main>
-      <Footer />
+      <Reveal><Footer /></Reveal>
     </div>
   );
 }
