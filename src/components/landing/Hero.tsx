@@ -14,12 +14,15 @@ export default function Hero() {
       />
 
       <div className="mx-auto flex max-w-4xl flex-col items-center px-4 pt-20 pb-16 text-center sm:px-6 lg:pt-28 lg:pb-24">
-        <p className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
-          <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
-          Nur für Postboten der Deutschen Post
-        </p>
+        <img
+          src={dpLogo}
+          alt="Deutsche Post"
+          className="w-[200px] max-w-full sm:w-[260px]"
+          width={984}
+          height={218}
+        />
 
-        <h1 className="mt-6 w-full max-w-5xl text-4xl leading-[1.12] font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-[3.5rem]">
+        <h1 className="mt-8 w-full max-w-5xl text-4xl leading-[1.12] font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-[3.5rem]">
           <span className="block lg:whitespace-nowrap">Du bringst sowieso Briefe raus.</span>
           <span className="block text-primary lg:whitespace-nowrap">
             Verdien dir jetzt etwas dazu.
