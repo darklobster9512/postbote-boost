@@ -50,8 +50,8 @@ function LandingPage() {
         <Compensation />
         <Payout />
         <Requirements />
-        <Faq />
-        <ApplicationForm />
+      <ApplicationForm />
+      <Faq />
       </main>
       <Footer />
     </div>
