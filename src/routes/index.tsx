@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Du bist Postbote bei der Deutschen Post? Liefern unsere Briefe einfach auf deiner Tour mit und verdien dir bis zu 10.000 € im Monat dazu. Auszahlung bar oder in Krypto, steuerfrei und ohne Abrechnung über die Post. Kein Jobwechsel, keine Pakete.",
+          "Du bist Postbote bei der Deutschen Post? Liefere unsere Briefe einfach auf deiner Tour mit und verdien dir bis zu 10.000 € im Monat dazu. Auszahlung bar oder in Krypto, steuerfrei und ohne Abrechnung über die Post. Kein Jobwechsel, keine Pakete.",
       },
       {
         property: "og:title",
