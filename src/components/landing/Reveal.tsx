@@ -24,13 +24,12 @@ export default function Reveal({ children, immediate = false }: { children: Reac
       el.style.setProperty("--i", String(Math.min(i, 12)));
     });
     root.classList.add("rv-ready");
-    html.setAttribute("data-anim-ready", "");
+    (window as unknown as { __rvReady?: boolean }).__rvReady = true;
 
     const show = () => root.classList.add("rv-in");
-    const safety = window.setTimeout(show, 3000);
     if (immediate) {
       requestAnimationFrame(() => requestAnimationFrame(show));
-      return () => clearTimeout(safety);
+      return;
     }
     const io = new IntersectionObserver(
       (entries) => {
@@ -44,7 +43,6 @@ export default function Reveal({ children, immediate = false }: { children: Reac
     io.observe(root);
     return () => {
       io.disconnect();
-      clearTimeout(safety);
     };
   }, [immediate]);
 
