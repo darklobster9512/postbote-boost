@@ -38,14 +38,11 @@ export default function Reveal({ children, immediate = false }: { children: Reac
           io.disconnect();
         }
       },
-      { threshold: 0.08, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.02, rootMargin: "0px 0px 8% 0px" },
     );
-    const start = () => requestAnimationFrame(() => io.observe(root));
-    if (document.readyState === "complete") start();
-    else window.addEventListener("load", start, { once: true });
+    requestAnimationFrame(() => io.observe(root));
     return () => {
       io.disconnect();
-      window.removeEventListener("load", start);
     };
   }, [immediate]);
 
