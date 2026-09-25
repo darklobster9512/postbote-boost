@@ -88,7 +88,7 @@ export default function Hero() {
             </dd>
           </div>
         </dl>
-        <p className="mt-3 max-w-lg text-xs text-muted-foreground">{PAYOUT_NOTE}</p>
+        <p style={{ "--i": 8 } as React.CSSProperties} className="hero-anim mt-3 max-w-lg text-xs text-muted-foreground">{PAYOUT_NOTE}</p>
       </div>
 
       <div aria-hidden="true" className="dhl-stripes h-2.5 w-full opacity-90" />
