@@ -18,7 +18,7 @@ export default function Hero() {
         <img
           src={dpLogo}
           alt="Deutsche Post"
-          className="w-[200px] max-w-full sm:w-[260px]"
+          className="w-[200px] max-w-full rounded-xl sm:w-[260px]"
           width={984}
           height={218}
         />
