@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 import Header from "@/components/landing/Header";
 import Hero from "@/components/landing/Hero";
@@ -42,6 +43,18 @@ export const Route = createFileRoute("/")({
 });
 
 function LandingPage() {
+  useEffect(() => {
+    const h = document.documentElement;
+    const toTop = () => {
+      const prev = h.style.scrollBehavior;
+      h.style.scrollBehavior = "auto";
+      window.scrollTo(0, 0);
+      h.style.scrollBehavior = prev;
+    };
+    toTop();
+    requestAnimationFrame(toTop);
+    window.addEventListener("load", toTop, { once: true });
+  }, []);
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
