@@ -23,6 +23,7 @@ export type Database = {
           is_postbote: boolean
           message: string | null
           name: string
+          notified_at: string | null
           payout: string
           phone: string
         }
@@ -34,6 +35,7 @@ export type Database = {
           is_postbote?: boolean
           message?: string | null
           name: string
+          notified_at?: string | null
           payout: string
           phone: string
         }
@@ -45,8 +47,27 @@ export type Database = {
           is_postbote?: boolean
           message?: string | null
           name?: string
+          notified_at?: string | null
           payout?: string
           phone?: string
+        }
+        Relationships: []
+      }
+      settings: {
+        Row: {
+          key: string
+          updated_at: string
+          value: string | null
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          value?: string | null
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          value?: string | null
         }
         Relationships: []
       }
