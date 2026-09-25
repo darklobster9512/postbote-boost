@@ -1,3 +1,4 @@
+import dpLogo from "@/assets/deutsche-post-logo.svg";
 import { PAY_AMOUNT, PAY_INTERVAL, PAY_PREFIX, PAYOUT_NOTE } from "./config";
 
 export default function Hero() {
