@@ -40,9 +40,12 @@ export default function Reveal({ children, immediate = false }: { children: Reac
       },
       { threshold: 0.08, rootMargin: "0px 0px -8% 0px" },
     );
-    io.observe(root);
+    const start = () => requestAnimationFrame(() => io.observe(root));
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
     return () => {
       io.disconnect();
+      window.removeEventListener("load", start);
     };
   }, [immediate]);
 
