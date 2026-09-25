@@ -1,4 +1,4 @@
-import telegramLogo from "@/assets/telegram.png.asset.json";
+const telegramLogo = { url: "/images/telegram.png" };
 import { PAYOUT_NOTE, TELEGRAM_HANDLE, TELEGRAM_URL } from "./config";
 import { Logo } from "./Header";
 
