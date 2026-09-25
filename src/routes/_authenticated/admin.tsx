@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
@@ -116,8 +116,8 @@ function AdminPage() {
                   </thead>
                   <tbody>
                     {appsQuery.data.map((a) => (
-                      <>
-                        <tr key={a.id} onClick={() => setOpenId(openId === a.id ? null : a.id)} className="cursor-pointer border-b border-border/40 text-foreground hover:bg-accent/40">
+                      <Fragment key={a.id}>
+                        <tr onClick={() => setOpenId(openId === a.id ? null : a.id)} className="cursor-pointer border-b border-border/40 text-foreground hover:bg-accent/40">
                           <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">{fmt(a.created_at)}</td>
                           <td className="px-4 py-3 font-semibold">{a.name}</td>
                           <td className="px-4 py-3"><a href={`mailto:${a.email}`} onClick={(e) => e.stopPropagation()} className="text-primary hover:underline">{a.email}</a></td>
@@ -126,7 +126,7 @@ function AdminPage() {
                           <td className="px-4 py-3">{a.payout}</td>
                         </tr>
                         {openId === a.id && (
-                          <tr key={`${a.id}-d`} className="border-b border-border/40 bg-background/60">
+                          <tr className="border-b border-border/40 bg-background/60">
                             <td colSpan={6} className="px-4 py-4 text-foreground">
                               <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">Nachricht</p>
                               <p className="mt-1 whitespace-pre-wrap">{a.message || "–"}</p>
@@ -136,7 +136,7 @@ function AdminPage() {
                             </td>
                           </tr>
                         )}
-                      </>
+                      </Fragment>
                     ))}
                   </tbody>
                 </table>
