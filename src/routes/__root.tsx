@@ -116,7 +116,7 @@ function RootShell({ children }: { children: ReactNode }) {
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(location.pathname==='/'){if(location.hash)history.replaceState(null,'',location.pathname+location.search);var t=function(){var h=document.documentElement,s=h.style.scrollBehavior;h.style.scrollBehavior='auto';window.scrollTo(0,0);h.style.scrollBehavior=s};t();addEventListener('DOMContentLoaded',t);addEventListener('pageshow',t)}if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){var d=document.documentElement;d.setAttribute('data-anim','');setTimeout(function(){if(!window.__rvReady)d.removeAttribute('data-anim')},6000)}}catch(e){}",
+              "try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(location.pathname==='/'){if(location.hash)history.replaceState(null,'',location.pathname+location.search);var t=function(){var h=document.documentElement,s=h.style.scrollBehavior;h.style.scrollBehavior='auto';window.scrollTo(0,0);h.style.scrollBehavior=s};t();addEventListener('DOMContentLoaded',t);addEventListener('pageshow',t)}if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.setAttribute('data-anim','')}}catch(e){}",
           }}
         />
         <HeadContent />
