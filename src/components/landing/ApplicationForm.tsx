@@ -41,6 +41,14 @@ const applicationSchema = z.object({
 
 type ApplicationValues = z.infer<typeof applicationSchema>;
 
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
+
+
 
 const inputClass =
   "w-full rounded-md border border-input bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/40";
