@@ -93,6 +93,7 @@ export default function ApplicationForm() {
       setSubmitError("Deine Bewerbung konnte nicht gesendet werden. Bitte versuche es gleich noch einmal.");
       return;
     }
+    window.fbq?.("track", "Lead");
     setSubmitted(true);
   };
 
