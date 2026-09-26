@@ -1,73 +1,40 @@
-# Werbebild-Prompt Meta – kurze, direkte Ansprache
+# Meta-Anzeigentexte für ZusatzKurier
 
-Zwei Zeilen, die jeder in einer Sekunde kapiert: Frage, dann das Geld. Alles andere im Bild ist nur noch Deko.
+Ich erstelle ein direkt einsetzbares Textpaket, abgestimmt auf die Landingpage und das hochgeladene Werbebild.
 
-## Der Prompt – komplett einfügen
+## Inhalt
 
-```text
-Erstelle ein fertiges Werbebild im Hochformat 4:5, fotorealistisch.
+- **5 unterschiedliche Varianten** für den Primary Text, damit mehrere Einstiege getestet werden können:
+  1. kurz und direkt
+  2. ausführlich und erklärend
+  3. Verdienst im Mittelpunkt
+  4. kein Jobwechsel und keine Pakete
+  5. Bar- oder Krypto-Auszahlung im Mittelpunkt
+- Zu jeder Variante jeweils eine passende **Headline** und **Description**.
+- Gut lesbare Absätze, Aufzählungen und gezielt eingesetzte Emojis statt überladener Emoji-Ketten.
+- Klare Ansprache ausschließlich an angestellte Briefzusteller der Deutschen Post.
+- Deutlicher Hinweis: bestehender Job und normale Tour bleiben, keine Paketzustellung.
+- Handlungsaufforderung zur Bewerbung über die Landingpage.
 
-Bild: früh morgens, deutsche Wohnstraße, leichter Dunst, tiefstehende warme Sonne über
-nassem Asphalt. Ein Briefträger in dunkler Uniform mit gelbem Schulterpanel und gelber
-Ledertasche steckt einen weißen Brief in einen Briefkasten an einer Hauswand. Motiv
-rechts, Fokus auf Hand und Brief, Hintergrund weich unscharf, 85mm bei f/1.8.
-
-Farbwelt: sehr dunkler, warmer Kohlegrau-Ton, tiefe Schwärzen, genau ein gesättigter
-Akzent in Gelb #FFCC00, ein kleines rotes Detail am Briefkasten. Hoher Kontrast,
-feines Filmkorn, oben und links viel ruhige dunkle Fläche für den Text.
-
-Text im Bild, exakt und fehlerfrei, fette serifenlose Schrift im Stil von Roboto:
-erste Zeile, weiss: Du bist Postbote?
-zweite Zeile, doppelt so gross, Gelb #FFCC00: Verdiene jetzt bis zu 10.000 € im Monat
-darunter, klein, weiss: bar oder in Krypto
-ganz unten, gefüllter gelber Knopf mit dunkler Schrift: Jetzt bewerben
-
-Schreib ausschliesslich diese Wörter, keinen weiteren Buchstaben.
-
-Nicht im Bild: Pakete, Kartonagen, Transportwagen, Geldscheine, Goldbarren, Logos oder
-Schriftzüge von Post oder DHL, real erkennbare Personen, amerikanische Briefkästen,
-Stockfoto-Lächeln, verformte Hände, Wasserzeichen.
-```
-
-## Einstellungen
+## Verwendete Aussagen
 
 ```text
-Seitenverhältnis: 4:5 (1080x1350) für den Feed, dazu 1:1 (1080x1080) und 9:16 (1080x1920)
-Durchläufe: 4 bis 6, dann das beste behalten
+Bis zu 10.000 € im Monat
+Bar oder Krypto
+Steuerfrei
+Zusätzlich zum bestehenden Gehalt
+Kein Jobwechsel
+Keine Kündigung
+Keine Pakete
+Nur für angestellte Postboten/Briefträger der Deutschen Post
 ```
 
-Wenn das Eurozeichen oder die Punkte in der Zahl falsch herauskommen: im Prompt „10.000 EUR" schreiben und die Zahl nachträglich korrigieren.
+„Sofortiger Start“ wird nicht in die Texte übernommen, weil diese Zusage auf der Landingpage nicht bestätigt wird. Die Formulierung „bis zu“ bleibt beim Verdienst immer erhalten.
 
-## Andere Köpfe im selben Stil (nur die zwei Textzeilen tauschen)
+## Kurzer Anzeigenhinweis
 
-```text
-Du bist Postbote?              Verdiene jetzt bis zu 10.000 € im Monat
-Noch auf Tour?                 Bis zu 10.000 € im Monat extra, bar oder in Krypto
-Briefe bringst du sowieso.     Verdien bis zu 10.000 € im Monat dazu
-Nur für Postboten der Deutschen Post.   Bis zu 10.000 € im Monat, steuerfrei
-Deine Tour bleibt.             Dein Einkommen wächst – bis zu 10.000 € im Monat
-```
+Die Anzeige betrifft Beschäftigung und muss bei Meta entsprechend als Sonderkategorie gekennzeichnet werden. Das Bild enthält Zeichen der Deutschen Post; deren Verwendung sollte vor dem Schalten rechtlich geklärt werden. Die gewünschten Aussagen „steuerfrei“ und „bis zu 10.000 €“ werden wie auf der Landingpage übernommen, sollten aber belegbar sein.
 
-## Anzeigentext dazu
+## Ergebnis
 
-```text
-Primärtext:
-Du bist Postbote und machst deine Tour sowieso? Dann nimm unsere Briefe einfach mit.
-Bis zu 10.000 € im Monat extra, bar oder in Krypto, steuerfrei. Kein Jobwechsel,
-keine Pakete.
-
-Überschrift:  Bis zu 10.000 € im Monat dazuverdienen
-Beschreibung: Nur für angestellte Briefzusteller der Deutschen Post
-Knopf:        Jetzt bewerben
-```
-
-## Kurz before dem Start
-
-- Recruitings-Anzeigen in der EU laufen unter der Sonderkategorie „Beschäftigung" – beim Anlegen angeben, sonst wird abgelehnt.
-- „bis zu" immer mitnehmen, das ist der Unterschied zwischen erlaubt und abgelehnt.
-- Das Post-Logo nicht mit generieren lassen; es liegt im Projekt unter `public/images/deutsche-post-logo.svg` und kommt als eigene Ebene ins Bild.
-- Nach jedem Durchlauf den Text Buchstabe für Buchstabe lesen.
-
-## Danach
-
-Schick mir die besten drei, dann lege ich sie unter `ads/images/` ab, prüfe die sicheren Zonen für alle Anzeigenformate und schreibe die Textvarianten für die Kampagne.
+Das fertige Paket wird übersichtlich nach **Primary Text**, **Headline** und **Description** gegliedert, sodass jede Variante direkt in den Meta Ads Manager kopiert werden kann.
