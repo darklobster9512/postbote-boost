@@ -1,95 +1,97 @@
-# Bild-Prompt für Higgsfield – Meta-Anzeigen im Post-Stil
+# Komplettes Werbebild für Meta – Prompt auf Deutsch
 
-Ein Master-Prompt zum Hineinkopieren, plus austauschbare Motiv-Blöcke. Gebaut auf die echte Seite: sehr dunkler, warmer Hintergrund, Gelb #FFCC00 als einziger Saturations-Akzent, Rot nur als Detail, harte Roboto-Überschrift, Briefe statt Pakete.
+Ein Prompt, der nicht nur ein Foto erzeugt, sondern ein fertiges Werbebild mit Werbetext, Angebot und Knopf. Alle Wortlaute sind die echten von deiner Seite.
 
 ## Was du in Higgsfield einstellst
 
 ```text
-Modell:              fotorealistisch, textfähig – falls die Überschrift im Bild stehen soll
-Seitenverhältnis:    4:5 (1080x1350)  <- Hauptbild für den Feed
-weitere Formate:     1:1 (1080x1080), 1.91:1 (1200x628), 9:16 (1080x1920)
-Anzahl:              4-6 Durchläufe pro Motiv, dann das beste behalten
+Seitenverhältnis:  4:5  (1080x1350)   Hauptbild für den Feed
+weitere Formate:   1:1 (1080x1080), 9:16 (1080x1920), 1.91:1 (1200x628)
+Modell:            eines, das Text im Bild sauber写出 kann (sonst Bild ohne Text nehmen)
+Durchläufe:        4 bis 6 pro Motiv, dann das beste behalten
 ```
 
-## Haupt-Prompt (Englisch, funktioniert bei den meisten Modellen am besten)
+## So sieht das fertige Bild aus
 
 ```text
-Photorealistic cinematic photograph, early morning, quiet residential street in a German
-suburb. A letter carrier in a dark charcoal uniform with a bright yellow shoulder panel
-and a yellow leather satchel pushes a white letter through the slot of a wall-mounted
-letterbox. Mist in the air, low warm sunlight raking across wet asphalt, shallow depth of
-field, 85mm lens at f/1.8, focus on the hand and the letter, background softly blurred.
-
-Mood and grade: dark, moody, warm charcoal-grey tones, deep blacks, one saturated accent
-only, vivid yellow #FFCC00, one small red detail on the letterbox. High contrast, subtle
-film grain, no haze filters, no HDR look.
-
-Composition: subject on the right third, large clean dark negative space on the left and
-top for a headline. Vertical 4:5 frame.
-
-Strictly exclude: any logos, wordmarks, brand names or corporate lettering, any readable
-text anywhere, parcels, cardboard boxes, packages, hand trucks, delivery vans, money
-stacks, gold bars, smiling stock-photo poses, real identifiable people, uniforms of any
-real postal company, American or British postboxes, extra fingers, warped hands.
++--------------------------------+
+|      Es ändert sich nichts.    |   weiss
+|   Nur dein Einkommen wächst.   |   Gelb #FFCC00, gross
+|                                |
+|   [ Foto: Brief in Briefkasten]|   dunkel, warm, Morgenlicht
+|                                |
+|  bis zu 10.000 EUR jeden Monat |   gelbe Zahl
+|  bar oder in Krypto            |
+|  (Steuerfrei)(Ohne Post-Abrechnung)  kleine gelbe Pillen
+|       [ Jetzt bewerben ]       |   gelber Knopf, dunkle Schrift
++--------------------------------+
 ```
 
-## Deutsche Fassung (falls du lieber auf Deutsch arbeitest)
+## Der Prompt – komplett einfügen
 
 ```text
-Fotorealistisches Kino-Foto, früh morgens, ruhige Wohnstraße in einer deutschen
-Vorstadt. Eine Briefträgerin in dunkler Kohlegrau-Uniform mit gelbem Schulterpanel und
-gelber Ledertasche schiebt einen weißen Brief in einen Briefkasten an einer Backsteinwand.
-Leichter Dunst, tiefe warme Sonne über nassem Asphalt, geringe Schärfentiefe, 85mm bei
-f/1.8, Fokus auf Hand und Brief.
+Erstelle ein fertiges Werbebild im Hochformat 4:5, fotorealistisch, kein Mockup,
+keine Browseroberfläche.
 
-Stimmung: dunkel, warm-graue Töne, tiefe Schwärzen, nur ein gesättigter Akzent in Gelb
-#FFCC00, ein kleines rotes Detail am Briefkasten. Hoher Kontrast, feines Filmkorn.
+Bild: früh morgens in einer deutschen Wohnstraße, leichter Dunst, tiefe warme Sonne
+über nassem Asphalt. Eine Briefträgerin in dunkler Kohlegrau-Uniform mit gelbem
+Schulterpanel und gelber Ledertasche schiebt einen weißen Brief in einen Briefkasten
+an einer Backsteinwand. Fokus auf Hand und Brief, Hintergrund weich unscharf,
+85mm-Objektiv bei f/1.8, Motiv rechts im Bild.
 
-Komposition: Motiv rechts im Drittel, große ruhige dunkle Fläche links und oben für eine
-Überschrift. Hochformat 4:5.
+Farbwelt: sehr dunkler, warmer Kohlegrau-Hintergrund, tiefe Schwärzen, genau ein
+gesättigter Akzent in Gelb #FFCC00, ein kleines rotes Detail am Briefkasten. Hoher
+Kontrast, feines Filmkorn, keine HDR-Optik, kein Weichzeichner-Look.
 
-Ausgeschlossen: Logos, Schriftzüge, Markennamen, jeglicher lesbare Text, Pakete,
-Kartonagen, Transportwagen, Zustellfahrzeuge, Geldscheine, Goldbarren,
-Stockfoto-Lächeln, real erkennbare Personen, Uniformen echter Postunternehmen.
+Text im Bild, fehlerfrei und exakt in dieser Anordnung, fette serifenlose Schrift
+im Stil von Roboto, gute Lesbarkeit im Newsfeed:
+erste Zeile, weiss: Es ändert sich nichts.
+zweite Zeile, deutlich grösser, Gelb #FFCC00: Nur dein Einkommen wächst.
+darunter, kleiner, weiss: bis zu 10.000 EUR jeden Monat
+darunter, kleiner, Gelb #FFCC00: bar oder in Krypto
+darunter zwei Pillen mit gelber Kontur und gelber Schrift: Steuerfrei   Ohne Post-Abrechnung
+ganz unten ein gefüllter gelber Knopf mit dunkler Schrift: Jetzt bewerben
+
+Schreib ausschliesslich diese Wörter, keinen weiteren Buchstaben, keine Logos,
+keine Signaturen, keine Wasserzeichen.
+
+Nicht im Bild: Pakete, Kartonagen, Transportwagen, Zustellfahrzeuge, Geldscheine,
+Goldbarren, echte Logos oder Schriftzüge von Post oder DHL, real erkennbare
+Personen, amerikanische oder britische Briefkästen, Stockfoto-Lächeln,
+verformte Hände, zusätzliches Licht.
 ```
 
-## Motiv-Blöcke zum Austauschen (der Rest des Prompts bleibt gleich)
+## Motiv-Blöcke zum Austauschen (Rest des Prompts bleibt)
 
-**A – Briefkasten-Nahaufnahme (Standard, siehe oben):** Hand mit weißem Brief über gelbem Schlitz, Briefkasten im Dunkeln, ein Regentropfen auf dem Metall.
+**A Briefkasten (Standard, oben):** Hand mit weißem Brief über gelbem Schlitz, ein Regentropfen auf dem Metall.
 
-**B – Rückenansicht Tour (gut für 1.91:1):** dieselbe Person geht mit gelber Tasche einen nebligen Bürgersteig entlang, warme Laternen, Briefe statt Paketen sichtbar, viel freier Raum links.
+**B Tour, Rückenansicht (gut für 1.91:1):** dieselbe Person geht mit gelber Tasche einen nebligen Bürgersteig entlang, warme Laternen, freie Fläche links für den Text.
 
-**C – Sortieren am Tisch (quadratisch):** Draufsicht auf einen dunklen Holztisch, weiße Briefe werden sortiert, gelber Umschlag als Akzent, eine Tasse Kaffee, scharfes Seitenlicht.
+**C Sortieren am Tisch (quadratisch):** Draufsicht auf dunklen Holztisch, weiße Briefe werden sortiert, ein gelber Umschlag, Tasse Kaffee, scharfes Seitenlicht.
 
-**D – Unterwegs (9:16 für Stories und Reels):** Person auf dem Fahrrad mit gelber Tasche, Hintergrund mit leichter Bewegungunschärfe, Morgenlicht, deutsche Straße.
+**D Unterwegs (9:16):** Person auf dem Fahrrad mit gelber Tasche, leichte Bewegungunschärfe im Hintergrund, Morgenlicht.
 
-## Wenn das Modell Text sauber kann: Variante mit Überschrift
-
-Nur nutzen, wenn du mit dem Wortlaut einverstanden bist – Modelle schreiben Text fast nie fehlerfrei, also nach dem Generieren prüfen.
+## Anzeigentext für Meta, paste-fertig
 
 ```text
-Add a clean headline in the dark negative space, bold geometric sans-serif similar to
-Roboto, crisp white and yellow:
-line 1 in white: Es ändert sich nichts.
-line 2 in yellow #FFCC00: Nur dein Einkommen wächst.
-No other text, no numbers, no logos, no buttons.
+Primärtext:
+Du bist als Postbote oder Briefträger bei der Deutschen Post angestellt und
+machst deine Tour sowieso? Dann liefere unsere Briefe einfach mit. Bis zu
+10.000 EUR jeden Monat extra, bar oder in Krypto, steuerfrei und ohne
+Abrechnung über die Deutsche Post. Kein Jobwechsel, keine Kündigung, keine Pakete.
+
+Überschrift:  Briefe mitliefern, dazuverdienen
+Beschreibung: Nur für angestellte Briefzusteller der Deutschen Post
+Knopf:        Jetzt bewerben
 ```
-
-Ohne diesen Block bleibt das Bild komplett textfrei – die Überschrift setzt du dann in Meta selbst darüber, was sauberer und erlaubnisicher ist.
-
-## Nie im Bild (gilt für jeden Durchlauf)
-
-- Keine Pakete, Kartonagen oder Transportwagen – die Seite sucht ausschließlich Briefzusteller.
-- Keine Logos oder Schriftzüge von Post oder DHL, nicht generieren lassen. Das echte Logo liegt im Projekt unter `public/images/deutsche-post-logo.svg` und kommt später als eigene Ebene ins Bild.
-- Kein Geld, keine Goldbarren, keine Euroscheine – wirkt wie ein unseriöses Versprechen und erhöht die Ablehnungsgefahr.
-- Keine echten, erkennbaren Personen.
 
 ## Vor dem ersten Meta-Start
 
-- Recruitings-Anzeigen gehören in der EU zur Sonderkategorie „Beschäftigung“. Beim Anlegen angeben, sonst wird die Anzeige abgelehnt; die Zielgruppe ist dort stärker eingeschränkt.
-- Verdienst- und Steuerangaben besser in den Anzeigentext als ins Bild, ohne Garantie-Wording. Der Zusatz „bis zu“ gehört dazu.
-- Ein Logo im Bild kann die Prüfung auf Markenverwechslung auslösen. Empfehlung: erst ohne Logo testen, Logo-Variante als zweite Anzeige.
+- Recruitings-Anzeigen gehören in der EU zur Sonderkategorie „Beschäftigung“. Beim Anlegen angeben, sonst wird die Anzeige abgelehnt; die Zielgruppe ist dort eingeschränkter.
+- Verdienst und Steuer besser mit „bis zu“, ohne Garantie. Die Zahl gehört eher in den Anzeigentext als ins Bild, wenn die Anzeige oft abgelehnt wird.
+- Das Post-Logo nicht generieren lassen. Es liegt im Projekt unter `public/images/deutsche-post-logo.svg` und kommt als eigene Ebene ins Bild; ein generiertes Logo wird immer falsch und kann wegen Markenverwechslung zur Ablehnung führen.
+- Nach dem Generieren jeden Buchstaben prüfen. Textmodelle verdrehen gern Endungen – lieber noch einmal laufen lassen als mit Tippfehler hochladen.
 
 ## Danach
 
-Schick mir das ausgewählte Bild (oder alle Kandidaten), dann lege ich es unter `ads/images/` als Kampagnenmaterial ab, prüfe die sicheren Zonen für die vier Anzeigenformate und schreibe dazu die Anzeigentexte.
+Schick mir die Kandidaten, dann lege ich das ausgewählte Bild unter `ads/images/` ab, kontrolliere die sicheren Zonen für alle vier Anzeigenformate und schreibe die passenden Textvarianten dazu.
