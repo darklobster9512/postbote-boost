@@ -7,7 +7,7 @@ Ein Prompt, der nicht nur ein Foto erzeugt, sondern ein fertiges Werbebild mit W
 ```text
 Seitenverhältnis:  4:5  (1080x1350)   Hauptbild für den Feed
 weitere Formate:   1:1 (1080x1080), 9:16 (1080x1920), 1.91:1 (1200x628)
-Modell:            eines, das Text im Bild sauber写出 kann (sonst Bild ohne Text nehmen)
+Modell:            eines, das Text im Bild sauber schreiben kann (sonst ohne Text nehmen)
 Durchläufe:        4 bis 6 pro Motiv, dann das beste behalten
 ```
 
@@ -88,7 +88,7 @@ Knopf:        Jetzt bewerben
 ## Vor dem ersten Meta-Start
 
 - Recruitings-Anzeigen gehören in der EU zur Sonderkategorie „Beschäftigung“. Beim Anlegen angeben, sonst wird die Anzeige abgelehnt; die Zielgruppe ist dort eingeschränkter.
-- Verdienst und Steuer besser mit „bis zu“, ohne Garantie. Die Zahl gehört eher in den Anzeigentext als ins Bild, wenn die Anzeige oft abgelehnt wird.
+- Verdienst und Steuer besser mit „bis zu“, ohne Garantie. Wenn die Anzeige oft abgelehnt wird, die Zahl aus dem Bild in den Anzeigentext verschieben.
 - Das Post-Logo nicht generieren lassen. Es liegt im Projekt unter `public/images/deutsche-post-logo.svg` und kommt als eigene Ebene ins Bild; ein generiertes Logo wird immer falsch und kann wegen Markenverwechslung zur Ablehnung führen.
 - Nach dem Generieren jeden Buchstaben prüfen. Textmodelle verdrehen gern Endungen – lieber noch einmal laufen lassen als mit Tippfehler hochladen.
 
