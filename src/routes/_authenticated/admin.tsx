@@ -86,6 +86,36 @@ function AdminPage() {
     }
   };
 
+  const copyPhone = async (phone: string) => {
+    const value = phone ?? "";
+    if (!value.trim()) {
+      toast.error("Für diese Bewerbung ist keine Telefonnummer eingetragen.");
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(value);
+      toast.success("Telefonnummer kopiert");
+    } catch {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = value;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.top = "0";
+        ta.style.left = "0";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        if (ok) toast.success("Telefonnummer kopiert");
+        else toast.error("Kopieren hat nicht funktioniert.");
+      } catch {
+        toast.error("Kopieren hat nicht funktioniert.");
+      }
+    }
+  };
+
   const signOut = async () => {
     await queryClient.cancelQueries();
     queryClient.clear();
@@ -158,7 +188,19 @@ function AdminPage() {
                           <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">{fmt(a.created_at)}</td>
                           <td className="px-4 py-3 font-semibold">{a.name}</td>
                           <td className="px-4 py-3"><a href={`mailto:${a.email}`} onClick={(e) => e.stopPropagation()} className="text-primary hover:underline">{a.email}</a></td>
-                          <td className="whitespace-nowrap px-4 py-3">{a.phone}</td>
+                          <td className="whitespace-nowrap px-4 py-3">
+                            <button
+                              type="button"
+                              title="Nummer kopieren"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                void copyPhone(a.phone);
+                              }}
+                              className="font-medium text-foreground underline-offset-4 hover:text-primary hover:underline"
+                            >
+                              {a.phone}
+                            </button>
+                          </td>
                           <td className="px-4 py-3">{a.area}</td>
                           <td className="px-4 py-3">{a.payout}</td>
                           <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
