@@ -3,6 +3,8 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { TelegramSettings } from "@/components/admin/TelegramSettings";
+import { toast } from "sonner";
+import { Toaster } from "@/components/ui/sonner";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
@@ -29,7 +31,16 @@ type Application = {
   message: string | null;
   is_postbote: boolean;
   created_at: string;
+  status: Status;
 };
+
+type Status = "neu" | "mailbox" | "interessiert" | "kein_interesse";
+const STATUSES: { v: Status; l: string; c: string }[] = [
+  { v: "neu", l: "Neu", c: "border-primary text-primary" },
+  { v: "mailbox", l: "Mailbox", c: "border-muted-foreground text-muted-foreground" },
+  { v: "interessiert", l: "Interessiert", c: "border-emerald-500 text-emerald-400" },
+  { v: "kein_interesse", l: "Kein Interesse", c: "border-destructive text-destructive" },
+];
 
 const fmt = (d: string) =>
   new Date(d).toLocaleString("de-DE", { dateStyle: "medium", timeStyle: "short" });
@@ -62,6 +73,18 @@ function AdminPage() {
     },
   });
 
+  const setStatus = async (id: string, status: Status) => {
+    const prev = queryClient.getQueryData<Application[]>(["applications"]);
+    queryClient.setQueryData<Application[]>(["applications"], (old) =>
+      old?.map((a) => (a.id === id ? { ...a, status } : a)),
+    );
+    const { error } = await supabase.from("applications").update({ status }).eq("id", id);
+    if (error) {
+      queryClient.setQueryData(["applications"], prev);
+      toast.error("Status konnte nicht gespeichert werden.");
+    }
+  };
+
   const signOut = async () => {
     await queryClient.cancelQueries();
     queryClient.clear();
@@ -71,6 +94,8 @@ function AdminPage() {
 
   return (
     <main className="min-h-screen bg-background">
+      <Toaster />
+
       <header className="border-b border-border/70 bg-card">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
           <span className="text-lg font-extrabold tracking-tight text-foreground">
@@ -121,6 +146,7 @@ function AdminPage() {
                       <th className="px-4 py-3">Telefon</th>
                       <th className="px-4 py-3">Gebiet</th>
                       <th className="px-4 py-3">Auszahlung</th>
+                      <th className="px-4 py-3">Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -133,10 +159,22 @@ function AdminPage() {
                           <td className="whitespace-nowrap px-4 py-3">{a.phone}</td>
                           <td className="px-4 py-3">{a.area}</td>
                           <td className="px-4 py-3">{a.payout}</td>
+                          <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
+                            <select
+                              aria-label="Status"
+                              value={a.status ?? "neu"}
+                              onChange={(e) => setStatus(a.id, e.target.value as Status)}
+                              className={`rounded-md border bg-background px-2 py-1 text-sm font-semibold ${STATUSES.find((s) => s.v === (a.status ?? "neu"))?.c}`}
+                            >
+                              {STATUSES.map((s) => (
+                                <option key={s.v} value={s.v} className="text-foreground">{s.l}</option>
+                              ))}
+                            </select>
+                          </td>
                         </tr>
                         {openId === a.id && (
                           <tr className="border-b border-border/40 bg-background/60">
-                            <td colSpan={6} className="px-4 py-4 text-foreground">
+                            <td colSpan={7} className="px-4 py-4 text-foreground">
                               <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">Nachricht</p>
                               <p className="mt-1 whitespace-pre-wrap">{a.message || "–"}</p>
                               <p className="mt-3 text-xs text-muted-foreground">
