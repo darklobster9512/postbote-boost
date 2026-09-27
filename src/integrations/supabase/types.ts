@@ -26,6 +26,7 @@ export type Database = {
           notified_at: string | null
           payout: string
           phone: string
+          status: Database["public"]["Enums"]["application_status"]
         }
         Insert: {
           area: string
@@ -38,6 +39,7 @@ export type Database = {
           notified_at?: string | null
           payout: string
           phone: string
+          status?: Database["public"]["Enums"]["application_status"]
         }
         Update: {
           area?: string
@@ -50,6 +52,7 @@ export type Database = {
           notified_at?: string | null
           payout?: string
           phone?: string
+          status?: Database["public"]["Enums"]["application_status"]
         }
         Relationships: []
       }
@@ -108,6 +111,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin"
+      application_status: "neu" | "mailbox" | "interessiert" | "kein_interesse"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -236,6 +240,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin"],
+      application_status: ["neu", "mailbox", "interessiert", "kein_interesse"],
     },
   },
 } as const
