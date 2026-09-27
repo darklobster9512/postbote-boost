@@ -3,6 +3,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { TelegramSettings } from "@/components/admin/TelegramSettings";
+import { AccountSettings } from "@/components/admin/AccountSettings";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -49,7 +50,7 @@ function AdminPage() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [openId, setOpenId] = useState<string | null>(null);
-  const [tab, setTab] = useState<"apps" | "telegram">("apps");
+  const [tab, setTab] = useState<"apps" | "telegram" | "settings">("apps");
 
   const adminQuery = useQuery({
     queryKey: ["is-admin"],
@@ -120,11 +121,12 @@ function AdminPage() {
         {adminQuery.data === true && (
           <>
             <div className="mb-8 flex gap-1 rounded-md bg-card p-1 w-fit">
-              {([["apps", "Bewerbungen"], ["telegram", "Telegram"]] as const).map(([k, l]) => (
+              {([["apps", "Bewerbungen"], ["telegram", "Telegram"], ["settings", "Einstellungen"]] as const).map(([k, l]) => (
                 <button key={k} onClick={() => setTab(k)} className={`rounded px-4 py-2 text-sm font-bold ${tab === k ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}>{l}</button>
               ))}
             </div>
             {tab === "telegram" && (<><h1 className="text-3xl font-extrabold tracking-tight text-foreground">Telegram</h1><TelegramSettings /></>)}
+            {tab === "settings" && (<><h1 className="text-3xl font-extrabold tracking-tight text-foreground">Einstellungen</h1><AccountSettings /></>)}
             {tab === "apps" && (<>
             <div className="flex items-end justify-between gap-4">
               <h1 className="text-3xl font-extrabold tracking-tight text-foreground">Bewerbungen</h1>
