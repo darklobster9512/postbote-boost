@@ -4,6 +4,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { TelegramSettings } from "@/components/admin/TelegramSettings";
 import { toast } from "sonner";
+import { Toaster } from "@/components/ui/sonner";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
@@ -93,6 +94,8 @@ function AdminPage() {
 
   return (
     <main className="min-h-screen bg-background">
+      <Toaster />
+
       <header className="border-b border-border/70 bg-card">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
           <span className="text-lg font-extrabold tracking-tight text-foreground">
