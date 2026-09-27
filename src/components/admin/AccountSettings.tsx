@@ -31,7 +31,7 @@ export function AccountSettings() {
     setStatus(null);
     const parsed = schema.safeParse({ current, next, repeat });
     if (!parsed.success) {
-      setStatus({ ok: false, text: parsed.error.issues[0].message });
+      setStatus({ ok: false, text: parsed.error.issues[0]?.message ?? "Ungültige Eingabe." });
       return;
     }
     setBusy(true);
