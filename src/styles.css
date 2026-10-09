@@ -42,10 +42,12 @@
   --color-ring: var(--ring);
   --color-dhl-red: var(--dhl-red);
   --color-dhl-yellow: var(--dhl-yellow);
+  --color-void: var(--void);
 }
 
 :root {
   --radius: 0.375rem;
+  --void: #000000;
 
   --background: oklch(0.165 0.006 85);
   --foreground: oklch(0.965 0.008 95);
@@ -91,6 +93,7 @@
 
 /* Die Seite ist durchgehend dunkel – .dark entspricht :root. */
 .dark {
+  --void: #000000;
   --background: oklch(0.165 0.006 85);
   --foreground: oklch(0.965 0.008 95);
   --card: oklch(0.205 0.007 85);
