@@ -30,7 +30,14 @@ function RunnerPage() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-8 bg-void px-4 text-center">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-8 bg-void px-4 py-10 text-center">
+      <img
+        src="/images/runner-hero.png"
+        alt=""
+        width={1600}
+        height={900}
+        className="w-full max-w-[640px] rounded-xl"
+      />
       <h1 className="text-2xl font-extrabold text-foreground sm:text-3xl">
         Kontaktiere uns über Telegram
       </h1>
