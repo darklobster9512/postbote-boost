@@ -2,7 +2,7 @@
 
 Eine eigene Seite unter `/runner`. Sie ist komplett schwarz und zeigt nur zwei Dinge: die Zeile **„Kontaktiere uns über Telegram“** und darunter den Telegram-Knopf, genau so wie er unten im Fußbereich steht (Telegram-Icon + **@call_agency**, Weiterleitung nach https://t.me/call_agency in einem neuen Tab).
 
-Kopfleiste, Menü, Fußbereich, Bewerbungsformular und alle其它 Inhalte der Startseite erscheinen dort nicht.
+Kopfleiste, Menü, Fußbereich, Bewerbungsformular und alle anderen Inhalte der Startseite erscheinen dort nicht.
 
 ## Ergebnis
 
@@ -11,7 +11,7 @@ Kopfleiste, Menü, Fußbereich, Bewerbungsformular und alle其它 Inhalte der St
 - Mittig steht die Überschrift **„Kontaktiere uns über Telegram“**.
 - Darunter der Knopf: Telegram-Icon links, Schriftzug **@call_agency** rechts, klickbar, öffnet https://t.me/call_agency in einem neuen Tab.
 - Der Knopf sieht exakt so aus wie im Fußbereich der Startseite (gleiche Größe, gleicher Rahmen, gleiche Reaktion beim Drüberfahren).
-- Auf dem Handy同样 mittig und vollständig sichtbar, nichts abgeschnitten.
+- Auf dem Handy ebenfalls mittig und vollständig sichtbar, nichts abgeschnitten.
 
 ## Technische Details
 
