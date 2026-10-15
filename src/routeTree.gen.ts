@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
-import { Route as RunnerRouteImport } from './routes/runner'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as ApiPublicNotifyTelegramRouteImport } from './routes/api/public/notify-telegram'
 
@@ -30,11 +29,6 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const RunnerRoute = RunnerRouteImport.update({
-  id: '/runner',
-  path: '/runner',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -49,14 +43,12 @@ const ApiPublicNotifyTelegramRoute = ApiPublicNotifyTelegramRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
-  '/runner': typeof RunnerRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/api/public/notify-telegram': typeof ApiPublicNotifyTelegramRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
-  '/runner': typeof RunnerRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/api/public/notify-telegram': typeof ApiPublicNotifyTelegramRoute
 }
@@ -65,22 +57,19 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
-  '/runner': typeof RunnerRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/api/public/notify-telegram': typeof ApiPublicNotifyTelegramRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    '/' | '/auth' | '/runner' | '/admin' | '/api/public/notify-telegram'
+  fullPaths: '/' | '/auth' | '/admin' | '/api/public/notify-telegram'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/runner' | '/admin' | '/api/public/notify-telegram'
+  to: '/' | '/auth' | '/admin' | '/api/public/notify-telegram'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/auth'
-    | '/runner'
     | '/_authenticated/admin'
     | '/api/public/notify-telegram'
   fileRoutesById: FileRoutesById
@@ -89,7 +78,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
-  RunnerRoute: typeof RunnerRoute
   ApiPublicNotifyTelegramRoute: typeof ApiPublicNotifyTelegramRoute
 }
 
@@ -114,13 +102,6 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/runner': {
-      id: '/runner'
-      path: '/runner'
-      fullPath: '/runner'
-      preLoaderRoute: typeof RunnerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/admin': {
@@ -155,7 +136,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
-  RunnerRoute: RunnerRoute,
   ApiPublicNotifyTelegramRoute: ApiPublicNotifyTelegramRoute,
 }
 export const routeTree = rootRouteImport
