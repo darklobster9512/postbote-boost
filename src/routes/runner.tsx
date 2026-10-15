@@ -17,19 +17,26 @@ function pixel(): Fbq | undefined {
 export const Route = createFileRoute("/runner")({
   head: () => ({
     meta: [
-      { title: "Kontakt über Telegram – ZusatzKurier" },
+      { title: "Kontakt über Telegram: @call_agency – ZusatzKurier" },
       {
         name: "description",
-        content: "Kontaktiere uns über Telegram: @call_agency.",
+        content:
+          "Schreib uns auf Telegram an @call_agency. Für Briefzusteller der Deutschen Post, die auf ihrer normalen Tour unsere Briefe mitliefern und sich bis zu 10.000 € im Monat dazuverdienen möchten – Auszahlung bar oder in Krypto.",
       },
-      { property: "og:title", content: "Kontakt über Telegram – ZusatzKurier" },
+      {
+        property: "og:title",
+        content: "Kontakt über Telegram: @call_agency – ZusatzKurier",
+      },
       {
         property: "og:description",
-        content: "Kontaktiere uns über Telegram: @call_agency.",
+        content:
+          "Schreib uns auf Telegram an @call_agency. Für Briefzusteller der Deutschen Post, die auf ihrer normalen Tour unsere Briefe mitliefern und sich bis zu 10.000 € im Monat dazuverdienen möchten – Auszahlung bar oder in Krypto.",
       },
+      { property: "og:url", content: "/runner" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/runner" }],
   }),
   component: RunnerPage,
 });
