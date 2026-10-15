@@ -5,7 +5,7 @@ import { getRunnerImageUrl } from "@/lib/runner-image";
 
 const telegramLogo = { url: "/images/telegram.png" };
 
-/**最长 Wartezeit auf das Bild, danach erscheint die Seite trotzdem. */
+/** Längste Wartezeit auf das Bild, danach erscheint die Seite trotzdem. */
 const IMAGE_TIMEOUT_MS = 6000;
 
 export const Route = createFileRoute("/runner")({
