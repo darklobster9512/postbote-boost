@@ -42,10 +42,12 @@
   --color-ring: var(--ring);
   --color-dhl-red: var(--dhl-red);
   --color-dhl-yellow: var(--dhl-yellow);
+  --color-pure-black: var(--pure-black);
 }
 
 :root {
   --radius: 0.375rem;
+  --pure-black: #000000;
 
   --background: oklch(0.165 0.006 85);
   --foreground: oklch(0.965 0.008 95);
