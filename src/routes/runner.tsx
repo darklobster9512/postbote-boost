@@ -1,9 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TELEGRAM_HANDLE, TELEGRAM_URL } from "@/components/landing/config";
 import { getRunnerImageUrl } from "@/lib/runner-image";
 
 const telegramLogo = { url: "/images/telegram.png" };
+
+/** Längste Wartezeit auf das Bild, danach erscheint die Seite trotzdem. */
+const IMAGE_TIMEOUT_MS = 6000;
 
 export const Route = createFileRoute("/runner")({
   head: () => ({
@@ -27,11 +30,49 @@ export const Route = createFileRoute("/runner")({
 
 function RunnerPage() {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [ready, setReady] = useState(false);
+  const loaderRef = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+
+    const finish = () => {
+      if (!cancelled) setReady(true);
+    };
+
     getRunnerImageUrl()
-      .then((r) => setImageUrl(r?.url ?? null))
-      .catch(() => setImageUrl(null));
+      .then((r) => {
+        if (cancelled) return;
+        const url = r?.url ?? null;
+        setImageUrl(url);
+        if (!url) {
+          setReady(true);
+          return;
+        }
+        const img = new Image();
+        loaderRef.current = img;
+        img.onload = finish;
+        img.onerror = finish;
+        img.src = url;
+        timer = setTimeout(finish, IMAGE_TIMEOUT_MS);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setImageUrl(null);
+        setReady(true);
+      });
+
+    return () => {
+      cancelled = true;
+      if (timer) clearTimeout(timer);
+      const img = loaderRef.current;
+      if (img) {
+        img.onload = null;
+        img.onerror = null;
+        loaderRef.current = null;
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -42,10 +83,26 @@ function RunnerPage() {
     };
   }, []);
 
+  if (!ready) {
+    return (
+      <main className="flex min-h-dvh items-center justify-center bg-pure-black px-4">
+        <span
+          role="status"
+          aria-label="Seite wird geladen"
+          className="h-10 w-10 animate-spin rounded-full border-2 border-primary/25 border-t-primary"
+        />
+      </main>
+    );
+  }
+
   return (
     <main className="flex min-h-dvh flex-col items-center justify-center gap-8 bg-pure-black px-4 py-10">
       {imageUrl && (
-        <img src={imageUrl} alt="" className="max-h-[50vh] w-auto max-w-full rounded-xl" />
+        <img
+          src={imageUrl}
+          alt=""
+          className="max-h-[50vh] w-auto max-w-full rounded-xl"
+        />
       )}
       <h1 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
         Kontaktiere uns über Telegram
@@ -54,16 +111,16 @@ function RunnerPage() {
         href={TELEGRAM_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-3 rounded-lg border border-border/70 bg-card px-5 py-4 transition-colors hover:border-primary/60"
+        className="inline-flex items-center gap-4 rounded-xl border border-border/70 bg-card px-8 py-6 transition-colors hover:border-primary/60"
       >
         <img
           src={telegramLogo.url}
           alt=""
           width={480}
           height={480}
-          className="h-7 w-7 shrink-0"
+          className="h-10 w-10 shrink-0"
         />
-        <span className="text-sm font-bold text-foreground">{TELEGRAM_HANDLE}</span>
+        <span className="text-lg font-bold text-foreground">{TELEGRAM_HANDLE}</span>
       </a>
     </main>
   );
