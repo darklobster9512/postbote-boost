@@ -4,6 +4,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { TelegramSettings } from "@/components/admin/TelegramSettings";
 import { AccountSettings } from "@/components/admin/AccountSettings";
+import { RunnerImageSettings } from "@/components/admin/RunnerImageSettings";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -156,7 +157,7 @@ function AdminPage() {
               ))}
             </div>
             {tab === "telegram" && (<><h1 className="text-3xl font-extrabold tracking-tight text-foreground">Telegram</h1><TelegramSettings /></>)}
-            {tab === "settings" && (<><h1 className="text-3xl font-extrabold tracking-tight text-foreground">Einstellungen</h1><AccountSettings /></>)}
+            {tab === "settings" && (<><h1 className="text-3xl font-extrabold tracking-tight text-foreground">Einstellungen</h1><AccountSettings /><RunnerImageSettings /></>)}
             {tab === "apps" && (<>
             <div className="flex items-end justify-between gap-4">
               <h1 className="text-3xl font-extrabold tracking-tight text-foreground">Bewerbungen</h1>
