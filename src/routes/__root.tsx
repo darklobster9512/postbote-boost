@@ -111,7 +111,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 const META_PIXEL_ID = "1087662750544139";
-export const RUNNER_PIXEL_ID = "1559541389311751";
+const RUNNER_PIXEL_ID = "1559541389311751";
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
