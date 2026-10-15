@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { TELEGRAM_HANDLE, TELEGRAM_URL } from "@/components/landing/config";
+import { getRunnerImageUrl } from "@/lib/runner-image";
 
 const telegramLogo = { url: "/images/telegram.png" };
 
@@ -25,6 +26,14 @@ export const Route = createFileRoute("/runner")({
 });
 
 function RunnerPage() {
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    getRunnerImageUrl()
+      .then((r) => setImageUrl(r?.url ?? null))
+      .catch(() => setImageUrl(null));
+  }, []);
+
   useEffect(() => {
     const previous = document.body.style.backgroundColor;
     document.body.style.backgroundColor = "var(--pure-black)";
@@ -34,7 +43,10 @@ function RunnerPage() {
   }, []);
 
   return (
-    <main className="flex min-h-dvh flex-col items-center justify-center gap-8 bg-pure-black px-4">
+    <main className="flex min-h-dvh flex-col items-center justify-center gap-8 bg-pure-black px-4 py-10">
+      {imageUrl && (
+        <img src={imageUrl} alt="" className="max-h-[50vh] w-auto max-w-full rounded-xl" />
+      )}
       <h1 className="text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
         Kontaktiere uns über Telegram
       </h1>
