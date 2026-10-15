@@ -2,7 +2,7 @@
 
 ## Was passiert
 
-Die Seite /runner bekommt eigene, passende Angaben fürBrowser-Tab, Linkvorschau und Suchmaschinen. Aktuell steht dort ein sehr allgemeiner Titel („Kontakt über Telegram – ZusatzKurier"); der neue Text beschreibt die Seite so, wie sie sich dem Besucher zeigt.
+Die Seite /runner bekommt eigene, passende Angaben für Browser-Tab, Linkvorschau und Suchmaschinen. Aktuell steht dort ein sehr allgemeiner Titel („Kontakt über Telegram – ZusatzKurier"); der neue Text beschreibt die Seite so, wie sie sich dem Besucher zeigt.
 
 ## Vorgeschlagener Wortlaut
 
