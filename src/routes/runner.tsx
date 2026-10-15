@@ -7,6 +7,12 @@ const telegramLogo = { url: "/images/telegram.png" };
 
 /** Längste Wartezeit auf das Bild, danach erscheint die Seite trotzdem. */
 const IMAGE_TIMEOUT_MS = 6000;
+const RUNNER_PIXEL_ID = "1559541389311751";
+
+type Fbq = (...args: unknown[]) => void;
+function pixel(): Fbq | undefined {
+  return (window as unknown as { fbq?: Fbq }).fbq;
+}
 
 export const Route = createFileRoute("/runner")({
   head: () => ({
@@ -29,6 +35,14 @@ export const Route = createFileRoute("/runner")({
 });
 
 function RunnerPage() {
+  useEffect(() => {
+    const w = window as unknown as { __pixelId?: string };
+    if (w.__pixelId !== RUNNER_PIXEL_ID) {
+      pixel()?.("init", RUNNER_PIXEL_ID);
+      pixel()?.("trackSingle", RUNNER_PIXEL_ID, "PageView");
+      w.__pixelId = RUNNER_PIXEL_ID;
+    }
+  }, []);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
   const loaderRef = useRef<HTMLImageElement | null>(null);
@@ -111,6 +125,7 @@ function RunnerPage() {
         href={TELEGRAM_URL}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => pixel()?.("trackSingle", RUNNER_PIXEL_ID, "Lead")}
         className="inline-flex items-center gap-4 rounded-xl border border-border/70 bg-card px-8 py-6 transition-colors hover:border-primary/60"
       >
         <img
